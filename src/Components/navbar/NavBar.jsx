@@ -1,15 +1,26 @@
+import { styled } from 'styled-components';
+
+import LinkItems from './LinkItems';
+import SiteName from './SiteName';
 
 const NavBar = ()=>{
 
 
+    const Header = styled.nav.attrs({
+        className: "navbar navbar-expand-lg"
+    })`
+        background-color: rgb(91, 127, 52);
+        padding: 20px;
+    `
+
+    
+
+
     return (
-        <nav>
-            <ul>
-                <li>Home</li>
-                <li>My Kingdom</li>
-                <li>Login</li>
-            </ul>
-        </nav>
+        <Header>
+            <SiteName />
+            <LinkItems />
+        </Header>
     );
 };
 

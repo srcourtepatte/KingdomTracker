@@ -4,9 +4,10 @@ import { NavBar } from './Components';
 
 function App() {
   
+  document.body.style = 'background: rgb(3, 40, 25)';
 
   return (
-    <div>
+    <div id="Page">
       <BrowserRouter>
         <NavBar />
         <Routes>
