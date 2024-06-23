@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import { Homepage } from './Views'
+import { Homepage, MyKingdom } from './Views'
 import { NavBar } from './Components';
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<Homepage />} />
+          <Route path="mykingdom" element={<MyKingdom />} />
         </Routes>
       </BrowserRouter>
     </div>

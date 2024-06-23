@@ -19,7 +19,7 @@ const LinkItems = ()=>{
         <>
             <List>
                 <LinkElements className="navbar-link" as={Link} to="/">Home</LinkElements>
-                <LinkElements className="navbar-link" as={Link} to="/">My Kingdom</LinkElements>
+                <LinkElements className="navbar-link" as={Link} to="/mykingdom">My Kingdom</LinkElements>
                 <LinkElements className="navbar-link" as={Link} to="/">Login</LinkElements>
             </List>
             
