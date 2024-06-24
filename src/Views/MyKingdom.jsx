@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { KingdomDetails, KingdomStats } from "../Components";
+import { KingdomDetails, KingdomStats, RuinStat } from "../Components";
 
 const MyKingdom = ()=>{
 
@@ -8,6 +8,7 @@ const MyKingdom = ()=>{
         <>
             <KingdomDetails />
             <KingdomStats />
+            <RuinStat />
         </>
 
     );

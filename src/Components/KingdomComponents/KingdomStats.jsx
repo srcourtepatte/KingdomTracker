@@ -3,33 +3,54 @@ import '../../style/main.css'
 
 const KingdomStats = ()=>{
 
-    const StatForm = styled.form`
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-        margin-top: 30px;
-        background-color: rgb(91, 127, 52);
-        border: 1px solid gold;
-        width: 30%;
-        height: 15vh;
-    `;
 
     return (
-        <StatForm>
+        <form className="statForm">
             <div className="statDiv">
-                <label className="label">Culture:</label>
+                <label className="label">Score</label>
+                <div className="statBox">
+                    <h1></h1>   
+                </div>
+                <label className="nameLabel">| Culture |</label>
+                <label className="label">Mod</label>
+                <div className="statBox">
+                    <h1></h1>   
+                </div>
             </div>
             <div className="statDiv">
-                <label className="label">Economy:</label>
+                <label className="label">Score</label>
+                <div className="statBox">
+                    <h1></h1>   
+                </div>
+                <label className="nameLabel">| Economy |</label>
+                <label className="label">Mod</label>
+                <div className="statBox">
+                    <h1></h1>   
+                </div>
             </div>
             <div className="statDiv">
-                <label className="label">Loyalty:</label>
+            <label className="label">Score</label>
+                <div className="statBox">
+                 <h1></h1>   
+                </div>
+                <label className="nameLabel">| Loyalty |</label>
+                <label className="label">Mod</label>
+                <div className="statBox">
+                    <h1></h1>   
+                </div>
             </div>
             <div className="statDiv">
-                <label className="label">Stability:</label>
-            </div>
-            
-        </StatForm>
+                <label className="label">Score</label>
+                <div className="statBox">
+                    <h1></h1>   
+                </div>
+                <label className="nameLabel">| Stability |</label>
+                <label className="label">Mod</label>
+                <div className="statBox">
+                    <h1></h1>   
+                </div>
+            </div>  
+        </form>
 
     );
 };
