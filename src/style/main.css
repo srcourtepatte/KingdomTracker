@@ -4,26 +4,6 @@
     text-align: center;
 }
 
-.statDiv {
-    border: 1px solid black;
-    margin-bottom: 5px;
-    margin-top: 6px;
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.statForm {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    margin-top: 30px;
-    background-color: rgb(91, 127, 52);
-    border: 1px solid gold;
-    width: 30%;
-    
-    margin-left: 15px;
-}
-
 .statBox {
     background-color: white;
     width: 45px;
@@ -31,6 +11,8 @@
     flex-direction: row;
     align-items: center;
     border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
 
 }
 
@@ -46,20 +28,22 @@
     font-size: xx-large;
     font-weight: bold;
     color: gold;
+    margin-left:auto;
+    margin-right: auto;
 }
 
-.ruinForm {
+.statForm {
     display: grid;
     column-gap: 10px;
     row-gap: 5px;
     column-rule: 10px;
-    column-count: 4;
     margin-top: 30px;
     background-color: rgb(91, 127, 52);
     border: 1px solid gold;
-    width: 30%;
+    width: 40%;
     padding-bottom: 5px;
     margin-left: 15px;
+    
 }
 
 .item1 {
@@ -76,4 +60,17 @@
 
 .item4 {
     grid-column: 4;
+}
+
+.item5 {
+    grid-column: 5;
+}
+
+.kingdomSheet {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 120vh;
+    align-content: center;
+
 }

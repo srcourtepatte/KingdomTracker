@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { KingdomDetails, KingdomStats, RuinStat } from "../Components";
+import { KingdomDetails, KingdomSkills, KingdomStats, RuinStat, Leaders, Commodities } from "../Components";
 
 const MyKingdom = ()=>{
 
@@ -7,9 +7,16 @@ const MyKingdom = ()=>{
     return (
         <>
             <KingdomDetails />
-            <KingdomStats />
-            <RuinStat />
+            <div className="kingdomSheet">
+                <KingdomStats />
+                <RuinStat />
+                <Leaders />
+                <KingdomSkills />
+                <Commodities />
+            </div>
+
         </>
+    
 
     );
 };
