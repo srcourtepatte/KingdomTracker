@@ -44,4 +44,6 @@ DBfiles/structure_upgrade_from.csv
 DBfiles/structure_upgrade_to.csv
 DBfiles/structures.csv
 DBfiles/worksites.csv
-backend/.env
+
+
+.env
