@@ -3,7 +3,7 @@ import '../../style/main.css';
 const Leaders = ()=>{
 
     const positions = [
-        "Ruler", "Counselor", "General",  "Emissary", "Magister", "Treasure", "Viceroy", "Warden"
+        "Ruler", "Counselor", "General",  "Emissary", "Magister", "Treasurer", "Viceroy", "Warden"
     ]
         
 

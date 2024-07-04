@@ -1,3 +1,7 @@
+.body {
+    cursor: default;
+}
+
 .label {
     font-size: xx-large;
     font-weight: bold;
@@ -66,11 +70,40 @@
     grid-column: 5;
 }
 
+.gridhead {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    justify-self: center;
+}
+
 .kingdomSheet {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    height: 120vh;
+    height: 110vh;
     align-content: center;
 
+}
+
+.Tabs {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+}
+
+.activeTab {
+    color: gold;
+    position: relative;
+}
+
+.activeTab::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    border-bottom: ridge gold 5px;
+    left: 0;
+    bottom: -10px;
+    border-radius: 50%;
+    height: 10px;
 }
