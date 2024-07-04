@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import { Homepage, MyKingdom } from './Views'
+import { Homepage, MyKingdom, Login } from './Views'
 import { NavBar } from './Components';
+import Registration from './Views/Registration';
+
 
 function App() {
   
@@ -12,7 +14,9 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="mykingdom" element={<MyKingdom />} />
+          <Route path="/mykingdom" element={<MyKingdom />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Registration />} />
         </Routes>
       </BrowserRouter>
     </div>

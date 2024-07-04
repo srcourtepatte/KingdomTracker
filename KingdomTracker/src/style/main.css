@@ -107,3 +107,39 @@
     border-radius: 50%;
     height: 10px;
 }
+
+.signInForm {
+    display: flex;
+    border: ridge 4px gold;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 40vw;
+    margin: auto;
+    margin-top: 20px;
+    align-items: center;
+    color: white;
+}
+
+.signInForm > p > a {
+    color: white;
+}
+
+.textInput {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.formLabel {
+    font-weight: 600;
+    margin: auto;
+}
+
+.goodButton {
+    background-color: green;
+    border: ridge 3px yellow;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    color: white;
+}
