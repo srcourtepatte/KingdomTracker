@@ -22,3 +22,25 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.xslx
+.csv
+DBfiles/~$charters.xlsx
+DBfiles/abilities.csv
+DBfiles/charters.csv
+DBfiles/charters.xlsx
+DBfiles/db test.sql
+DBfiles/DB_outline.pdf
+DBfiles/DB_outline.vsdx
+DBfiles/feats.csv
+DBfiles/generateDB.sql
+DBfiles/governments.csv
+DBfiles/heartlands.csv
+DBfiles/Leadership.csv
+DBfiles/resources.csv
+DBfiles/ruins.csv
+DBfiles/ruins.xlsx
+DBfiles/skills.csv
+DBfiles/structure_upgrade_from.csv
+DBfiles/structure_upgrade_to.csv
+DBfiles/structures.csv
+DBfiles/worksites.csv
