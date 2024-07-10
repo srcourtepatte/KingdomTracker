@@ -19,7 +19,9 @@ const register = async (req, res) => {
 };
 
 const login = async (req, response) => {
-    const { email, password } = req.body;
+    const email = req.body.body.email;
+    const password = req.body.body.password;
+  
     await db.promise().query("CALL Login('" + email + "',@o_user_id, @hashedPassword)").then(async (result) => {
   
       await db.promise().query("select @hashedPassword, @o_user_id").then((res) => {

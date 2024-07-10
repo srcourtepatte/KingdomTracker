@@ -1,5 +1,7 @@
 import { useNavigate, Link } from "react-router-dom";
 
+import apiCalls from "../../api";
+
 const LoginForm = ()=>{
     const navigate = useNavigate();
 
@@ -8,8 +10,13 @@ const LoginForm = ()=>{
         const password = document.getElementById("password").value;
 
 
-        navigate("/mykingdom");
-    }
+        apiCalls.login(email, password).then((res)=>{
+            console.log(res);
+            alert("login successful");
+            navigate("/mykingdom");
+        }).catch((err) =>{console.log(err);});
+
+    };
 
 
     return (
