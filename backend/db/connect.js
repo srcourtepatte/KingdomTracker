@@ -12,6 +12,7 @@ const connection = mySql.createConnection({
     password: DB_PASSWORD,
     database: DB_NAME,
     insecureAuth: true
+
 });
 
 connection.connect((err)=>{
@@ -19,4 +20,4 @@ connection.connect((err)=>{
     console.log("Connected!");
 });
 
-const db = connection;
+module.exports = connection;
