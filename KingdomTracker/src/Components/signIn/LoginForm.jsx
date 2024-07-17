@@ -12,7 +12,7 @@ const LoginForm = ()=>{
 
         apiCalls.login(email, password).then((res)=>{
             console.log(res);
-            alert("login successful");
+            console.log(document.cookie);
             navigate("/mykingdom");
         }).catch((err) =>{console.log(err);});
 

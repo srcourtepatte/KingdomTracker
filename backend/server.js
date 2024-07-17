@@ -9,6 +9,8 @@ const backend = express();
 backend.use(bodyParser.json());
 
 backend.use(cors({
+    credentials: true,
+    origin: "http://localhost:5173"
 }));
 
 backend.use('/', router);

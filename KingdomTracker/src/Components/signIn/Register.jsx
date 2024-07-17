@@ -1,5 +1,7 @@
 import { useNavigate, Link } from "react-router-dom";
 
+import apiCalls from "../../api";
+
 const Register = ()=>{
     const navigate = useNavigate();
 
@@ -8,8 +10,12 @@ const Register = ()=>{
         const username = document.getElementById("username").value;
         const password = document.getElementById("password").value;
 
+        apiCalls.register(username, email, password).then((res)=>{
+            console.log(document.cookie);
+            navigate("/mykingdom");
+        }).catch((err)=>{console.log(err);});
 
-        navigate("/mykingdom");
+
     }
 
     return (
