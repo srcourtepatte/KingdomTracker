@@ -17,26 +17,25 @@ const register = async (req, response) => {
             const token = auth.getToken(userId);
             response.set('Access-Control-Allow-Credentials', 'true');
             response.set('Access-Control-Expose-Headers', 'date, etag, access-control-allow-origin, access-control-allow-credentials');
-            const cookie1 = cookie.serialize('token', token, {
+
+            response.setHeader('Set-Cookie', cookie.serialize('token', token, {
               httpOnly: true,
               maxAge: 60 * 60 * 24 * 7,
+              sameSite: 'none',
               secure: true
-            });
-            const cookie2 = cookie.serialize('userId', userId, {
+            }));
+            response.append('Set-Cookie', cookie.serialize('userId',userId, {
               httpOnly: true,
               secure: true
-            });
-            const cookie3 =  cookie.serialize('user_name', username, {
+            }));
+            response.append('Set-Cookie', cookie.serialize('user_name', username, {
               httpOnly: true,
               secure: true
-            });
-            const cookie4 =  cookie.serialize('email', email, {
+            }));
+            response.append('Set-Cookie', cookie.serialize('email', email, {
               httpOnly: true,
               secure: true
-            });
-
-            response.set('Set-Cookie', cookie1 + ";" + cookie2 +"; " + cookie3 + "; " + cookie4
-          );
+            }));
   
             response.status(201).json({ message: 'User registered successfully'});
           });
@@ -47,6 +46,10 @@ const register = async (req, response) => {
 };
 
 const login = async (req, response) => {
+  // code to pull info from cookies.
+    // const cookies = req.headers.cookie;
+    // const cookiearr = cookie.parse(cookies);
+    // console.log(cookiearr.email);
     const email = req.body.email;
     const password = req.body.password;
     response.setHeader('Access-Control-Allow-Credentials', 'true');
@@ -64,8 +67,6 @@ const login = async (req, response) => {
             db.promise().query("select user_id, user_name, email from users where user_id = @o_user_id").then((r) => {
               userdetails = r[0][0];
               
-              console.log(userdetails.user_name);
-              
               const token = auth.getToken(userdetails.user_id);
               response.setHeader('Set-Cookie', cookie.serialize('token', token, {
                 httpOnly: true,
@@ -73,15 +74,15 @@ const login = async (req, response) => {
                 sameSite: 'none',
                 secure: true
               }));
-              response.setHeader('Set-Cookie', cookie.serialize('userId', userdetails.user_id, {
+              response.append('Set-Cookie', cookie.serialize('userId', userdetails.user_id, {
                 httpOnly: true,
                 secure: true
               }));
-              response.setHeader('Set-Cookie', cookie.serialize('user_name', userdetails.user_name, {
+              response.append('Set-Cookie', cookie.serialize('user_name', userdetails.user_name, {
                 httpOnly: true,
                 secure: true
               }));
-              response.setHeader('Set-Cookie', cookie.serialize('email', userdetails.email, {
+              response.append('Set-Cookie', cookie.serialize('email', userdetails.email, {
                 httpOnly: true,
                 secure: true
               }));
