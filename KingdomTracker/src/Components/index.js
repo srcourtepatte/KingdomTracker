@@ -9,7 +9,11 @@ import Features from "./KingdomComponents/Features";
 import LoginForm from "./signIn/LoginForm";
 import Register from "./signIn/Register";
 import KingdomCard from "./KingdomCard";
+import ChooseCharter from "./KingdomCreationForms/ChooseCharter";
+import ChooseGov from "./KingdomCreationForms/ChooseGov";
+import ChooseHeartland from "./KingdomCreationForms/ChooseHeartland";
+import FinalDetails from "./KingdomCreationForms/FinalDetails";
 
 export {NavBar, KingdomDetails, KingdomStats, RuinStat, KingdomSkills, Leaders, Commodities, Features,
-    LoginForm, Register, KingdomCard
+    LoginForm, Register, KingdomCard, ChooseCharter, ChooseGov, ChooseHeartland, FinalDetails
 };
