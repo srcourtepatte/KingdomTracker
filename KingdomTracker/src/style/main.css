@@ -151,3 +151,8 @@
     padding: 5px 10px;
     color: white;
 }
+
+.aspectGrid{
+    display: grid;
+    border: 1px solid gold;
+}

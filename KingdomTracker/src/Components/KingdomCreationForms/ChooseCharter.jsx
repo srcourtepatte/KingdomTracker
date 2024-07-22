@@ -4,7 +4,7 @@ const ChooseCharter = ()=>{
 
     return (
         
-        <div className="signInForm">
+        <div className="aspectGrid">
             <h1>hello           </h1>
         </div>
     );

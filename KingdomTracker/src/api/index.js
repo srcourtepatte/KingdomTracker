@@ -8,6 +8,8 @@ const api = axios.create({
     
 });
 
+// API calls for login and registration
+
 const login = async (email, password)=>{
     const response = api.request({
         url: '/user/login',
@@ -38,11 +40,22 @@ const register = async (username, email, password)=>{
     return response;
 };
 
+//API calls for Kingdom Aspects
 
+const getHeartlands = async()=>{
+    const response = api.request({
+        url: '/aspects/list_heartlands',
+        method: 'get',
+        withCredentials: true,
+    });
+
+    return response;
+};
 
 const apiCalls = {
     login,
-    register
+    register,
+    getHeartlands
 };
 
 export default apiCalls;

@@ -3,7 +3,7 @@
 const ChooseGov = ()=>{
 
     return (
-        <div>
+        <div className="aspectGrid">
 
         </div>
     );
