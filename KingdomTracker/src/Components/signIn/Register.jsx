@@ -12,7 +12,7 @@ const Register = ()=>{
 
         apiCalls.register(username, email, password).then((res)=>{
             console.log(document.cookie);
-            navigate("/mykingdom");
+            navigate("/dashboard");
         }).catch((err)=>{console.log(err);});
 
 

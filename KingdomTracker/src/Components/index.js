@@ -8,7 +8,8 @@ import Commodities from "./KingdomComponents/Commodities";
 import Features from "./KingdomComponents/Features";
 import LoginForm from "./signIn/LoginForm";
 import Register from "./signIn/Register";
+import KingdomCard from "./KingdomCard";
 
 export {NavBar, KingdomDetails, KingdomStats, RuinStat, KingdomSkills, Leaders, Commodities, Features,
-    LoginForm, Register
+    LoginForm, Register, KingdomCard
 };

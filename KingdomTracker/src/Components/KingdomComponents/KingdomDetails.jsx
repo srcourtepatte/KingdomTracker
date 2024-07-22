@@ -25,6 +25,7 @@ const KingdomDetails = ()=>{
             <KingdomName>| Capitol: </KingdomName>
             <KingdomName>| Fame Points: </KingdomName>
             <KingdomName>| DC: </KingdomName>
+            <KingdomName>| Size: </KingdomName>
 
         </KingdomHeader>
 

@@ -19,7 +19,6 @@ const login = async (email, password)=>{
         withCredentials: true,
     });
         
-    // const response = await api.post('user/login', {body: {email: email, password: password}, credentials: 'same-origin'} );
 
     return response;
 };
@@ -35,8 +34,6 @@ const register = async (username, email, password)=>{
         },
         withCredentials: true,
     });
-
-    // return api.post('user/register', { body: {username: username, email: email, password: password}, withCredentials: true});
 
     return response;
 };
