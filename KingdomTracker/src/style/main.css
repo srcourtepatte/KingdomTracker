@@ -153,6 +153,19 @@
 }
 
 .aspectGrid{
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
     border: 1px solid gold;
+
+}
+
+.aspectCard{
+    display: flex;
+    flex-wrap: wrap;
+    width: 85%;
+    margin: auto;
+    border: 1px solid gold;
+    margin-top: 5px;
+    background: rgb(71, 105, 3)
 }
