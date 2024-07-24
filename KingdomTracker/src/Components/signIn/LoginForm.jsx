@@ -13,7 +13,7 @@ const LoginForm = ()=>{
         apiCalls.login(email, password).then((res)=>{
             console.log(res);
             console.log(document.cookie);
-            navigate("/mykingdom");
+            navigate("/dashboard");
         }).catch((err) =>{console.log(err);});
 
     };

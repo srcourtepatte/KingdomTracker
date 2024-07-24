@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import { Homepage, MyKingdom, Login } from './Views'
+import { Homepage, MyKingdom, Login, UserDash } from './Views'
 import { NavBar } from './Components';
 import Registration from './Views/Registration';
 
@@ -14,9 +14,10 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/mykingdom" element={<MyKingdom />} />
+          <Route path="/mykingdom/:kingdomName" element={<MyKingdom />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
+          <Route path="/dashboard" element={<UserDash />} />
         </Routes>
       </BrowserRouter>
     </div>

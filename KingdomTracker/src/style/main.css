@@ -85,6 +85,14 @@
 
 }
 
+.kingdomCard {
+    border: 1px solid gold;
+    width: 85%;
+    margin: auto;
+    margin-top: 10px;
+    text-align: center;
+}
+
 .Tabs {
     display: flex;
     justify-content: space-evenly;
