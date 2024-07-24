@@ -18,24 +18,33 @@ const NewKingdom = ()=>{
         currPage === 0 ? 
         <div className="">
             <ChooseCharter />
-            <input type="button" value="Continue" onClick={handleNext}/>
+            <div className="buttonContainer">
+                <input type="button" value="Continue" onClick={handleNext} className="goodButton"/>
+            </div>
         </div> :
         currPage === 1 ?
         <div className="">
             <ChooseHeartland />
-            <input type="button" value="back" onClick={handleBack}/>
-            <input type="button" value="Continue" onClick={handleNext}/> 
+            <div className="buttonContainer">
+                <input type="button" value="back" onClick={handleBack} className="badButton"/>
+                <input type="button" value="Continue" onClick={handleNext} className="createButton"/> 
+            </div>    
         </div> :
         currPage === 2 ?
         <div className="">
             <ChooseGov />
-            <input type="button" value="back" onClick={handleBack}/>
-            <input type="button" value="Continue" onClick={handleNext}/>
+            <div className="buttonContainer">
+                <input type="button" value="back" onClick={handleBack} className="badButton"/>
+                <input type="button" value="Continue" onClick={handleNext} className="createButton"/>
+            </div>  
         </div> :
         <div className="">
             <FinalDetails />
-            <input type="button" value="back" onClick={handleBack}/>
-            <input type="button" value="Continue" onClick={handleNext}/>
+            <div className="buttonContainer">
+                <input type="button" value="back" onClick={handleBack} className="badButton"/>
+                <input type="button" value="Continue" className="createButton"/>
+            </div>
+            
         </div>
 
     );

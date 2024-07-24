@@ -2,11 +2,11 @@ const express = require("express");
 const app = express();
 
 const userRoutes = require('./userRoute');
-const heartlandRoutes = require('./heartlandRoutes');
+const aspectRoutes = require('./aspectRoutes');
 
 
 app.use('/user', userRoutes);
-app.use('/aspects', heartlandRoutes);
+app.use('/aspects', aspectRoutes);
 
 
 module.exports = app;

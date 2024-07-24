@@ -52,10 +52,32 @@ const getHeartlands = async()=>{
     return response;
 };
 
+const getCharters = async ()=>{
+    const response = api.request({
+        url: '/aspects/list_charters',
+        method: 'get',
+        withCredentials: true,
+    });
+
+    return response;
+};
+
+const getGovernments = async ()=>{
+    const response = api.request({
+        url: 'aspects/list_governments',
+        method: 'get',
+        withCredentials: true,
+    });
+
+    return response;
+};
+
 const apiCalls = {
     login,
     register,
-    getHeartlands
+    getHeartlands,
+    getCharters,
+    getGovernments
 };
 
 export default apiCalls;

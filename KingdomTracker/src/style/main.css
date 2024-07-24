@@ -152,20 +152,54 @@
     color: white;
 }
 
+.badButton {
+    background-color: red;
+    border: ridge 3px yellow;
+    margin-left: auto;
+    margin-right: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    color: white;
+}
+
+.createButton{
+    background-color: green;
+    border: ridge 3px yellow;
+    margin-right: auto;
+    margin-left: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    color: white;
+}
+
 .aspectGrid{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    border: 1px solid gold;
+    width: 80%;
+    margin: auto;
+    margin-top: 10px;
 
 }
 
 .aspectCard{
-    display: flex;
-    flex-wrap: wrap;
+    display: block;
     width: 85%;
     margin: auto;
     border: 1px solid gold;
     margin-top: 5px;
-    background: rgb(71, 105, 3)
+    background: rgb(71, 105, 3);
+    padding: 5px;
+}
+
+.buttonContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-items: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
 }
