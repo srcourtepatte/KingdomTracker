@@ -18,6 +18,7 @@ const ChooseHeartland = ()=>{
         <div className="aspectGrid">
             {heartlands.map((heartland) =>(
                 <div className="aspectCard">
+                <input type="radio" name="heartlandChoice" value={heartland.heartland_id} />
                 <h1>{heartland.heartland_name}</h1>
                 <p>{heartland.heartland_description}</p>
                 <p>Ability Boost: {heartland.ability_name}</p>
