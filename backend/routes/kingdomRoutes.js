@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const kingdomControler = require('../controllers/kingdomController');
+const kingdomController = require('../controllers/kingdomController');
 const { authMiddleware } = require('../auth');
 
-router.post('/createKingdom', kingdomControler.createKingdom );
+router.post('/createKingdom', kingdomController.createKingdom );
+router.get('/getuserkingoms', kingdomController.getUserKingdoms);
 
 module.exports = router;

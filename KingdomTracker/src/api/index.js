@@ -72,12 +72,36 @@ const getGovernments = async ()=>{
     return response;
 };
 
+// calls for Kingdom details
+
+const newKingdom = async ()=>{
+    const response = api.request({
+        url: 'kingdoms/createKingdom',
+        method: 'post',
+        withCredentials: true,
+    });
+
+    return response;
+}
+
+const getUserKingdoms = async ()=>{
+    const response = api.request({
+        url: 'kingdoms/getuserkingoms',
+        method: 'get',
+        withCredentials: true,
+    });
+
+    return response;
+};
+
 const apiCalls = {
     login,
     register,
     getHeartlands,
     getCharters,
-    getGovernments
+    getGovernments,
+    getUserKingdoms,
+    newKingdom
 };
 
 export default apiCalls;

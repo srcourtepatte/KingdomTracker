@@ -12,5 +12,19 @@ const createKingdom = async (req, response) =>{
     response.status(200).json({success: true});
 };
 
+const getUserKingdoms = async (req, response) =>{
 
-module.exports = {createKingdom};
+    console.log(req.headers);
+    const user_id = 18;
+    db.promise().query("CALL getUserKingdoms(" + user_id + ")").then(async(result) =>{
+        if(result[0][0] === null){
+            response.status(200).json({success: true, data: "No Kingdoms found"});
+        }
+        else{
+            response.status(200).json({success: true, data: result[0][0]});
+        }
+    });
+};
+
+
+module.exports = {createKingdom, getUserKingdoms};
