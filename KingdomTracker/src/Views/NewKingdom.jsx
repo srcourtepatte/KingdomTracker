@@ -1,3 +1,4 @@
+import apiCalls from "../api";
 import { ChooseCharter, ChooseHeartland, ChooseGov, FinalDetails } from "../Components";
 import { useState } from "react";
 
@@ -12,6 +13,18 @@ const NewKingdom = ()=>{
 
     const handleBack = ()=>{
         setCurrPage(currPage -1);
+    }
+
+    const submit = ()=>{
+        const name = sessionStorage.getItem("name");
+        const heartland = sessionStorage.getItem("heartland");
+        const charter = sessionStorage.getItem("Charter");
+        const gov = sessionStorage.getItem("government");
+        const level = sessionStorage.getItem("level");
+        apiCalls.newKingdom(name, heartland, charter, gov, level).then((result)=>{
+            console.log(result);
+            // navigate(`/myKingdom/${kingdomName}`);
+        })
     }
 
     return (
@@ -42,7 +55,7 @@ const NewKingdom = ()=>{
             <FinalDetails />
             <div className="buttonContainer">
                 <input type="button" value="back" onClick={handleBack} className="badButton"/>
-                <input type="button" value="Continue" className="createButton"/>
+                <input type="button" value="Finish" className="createButton" onClick={submit}/>
             </div>
             
         </div>

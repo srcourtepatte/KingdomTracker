@@ -11,7 +11,6 @@ const ChooseGov = ()=>{
         if(!calledAPI.current){
             calledAPI.current = true;
             apiCalls.getGovernments().then((result)=>{
-                console.log(result.data.data);
                 setGovernments(result.data.data);
             });
         };

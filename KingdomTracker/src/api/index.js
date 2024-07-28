@@ -74,10 +74,18 @@ const getGovernments = async ()=>{
 
 // calls for Kingdom details
 
-const newKingdom = async ()=>{
+const newKingdom = async (name, heartland, charter, gov, level )=>{
+    console.log(name, heartland, charter, gov, level);
     const response = api.request({
         url: 'kingdoms/createKingdom',
         method: 'post',
+        data: {
+            name: name,
+            heartland: heartland,
+            charter: charter,
+            gov: gov,
+            level: level
+        },
         withCredentials: true,
     });
 
