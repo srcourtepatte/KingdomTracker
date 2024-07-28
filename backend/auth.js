@@ -4,6 +4,7 @@ const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwT = require('passport-jwt').ExtractJwt;
 const LocalStrategy = require('passport-local').Strategy;
 const jwt = require('jsonwebtoken');
+const cookie = require('cookie');
 
 const SECRET_KEY = process.env.SECRET_KEY;
 
@@ -16,7 +17,9 @@ const verifyToken = (token) =>{
 };
 
 const authMiddleware = (req, res, next) => {
-    const token = req.headers["authorization"]?.split(" ")[1];
+    const cookies = req.headers.cookie;
+    const cookieArr = cookie.parse(cookies);
+    const token = cookieArr.token;
     if (!token) {
       return res.status(401).send("Access denied");
     }

@@ -14,8 +14,9 @@ const createKingdom = async (req, response) =>{
 
 const getUserKingdoms = async (req, response) =>{
 
-    console.log(req.headers);
-    const user_id = 18;
+    const cookies = req.headers.cookie;
+    const cookieArr = cookie.parse(cookies);
+    user_id = cookieArr.userId;
     db.promise().query("CALL getUserKingdoms(" + user_id + ")").then(async(result) =>{
         if(result[0][0] === null){
             response.status(200).json({success: true, data: "No Kingdoms found"});

@@ -23,12 +23,8 @@ const UserDash = ()=>{
     });
    
     const handleNewKingdom = ()=>{
-
-
-        apiCalls.newKingdom().then((result)=>{
-            console.log(result);
-        });
-        };
+        navigate('/newKingdom');
+    };
 
     return (
         <>

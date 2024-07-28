@@ -50,12 +50,6 @@ const register = async (req, response) => {
 };
 
 const login = async (req, response) => {
-  // code to pull info from cookies.
-    const cookies = req.headers.cookie;
-    if (cookies) {
-          const cookiearr = cookie.parse(cookies);
-          console.log(cookiearr.email);
-    }
 
     const email = req.body.email;
     const password = req.body.password;
