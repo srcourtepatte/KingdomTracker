@@ -1,29 +1,36 @@
 
+import { useNavigate } from "react-router-dom";
 import { KingdomCard } from "../Components";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import apiCalls from "../api";
 
 const UserDash = ()=>{
     
     const [kingdomList, setKingdomList] = useState([]);
+    const navigate = useNavigate();
+    const calledAPI = useRef(false);
 
-    const testList = [  {name: "kingdom1", lvl: "1"}, 
-                        {name: "kingdom2", lvl: "1"}, 
-                        {name: "kingdom3", lvl: "1"}];
+    useEffect(()=>{
+        if(!calledAPI.current)
+        {
+            calledAPI.current = true;
+            apiCalls.getUserKingdoms().then((result)=>{
+                console.log(result.data.data);
+                setKingdomList(result.data.data);
+            });
+        }
+    });
    
     const handleNewKingdom = ()=>{
-        console.log("click");
-        
-        
-    }
-
-
+        navigate('/newKingdom');
+    };
 
     return (
         <>
             <div className="statForm">
                 <p className="nameLabel">Kingdom List: </p>
-                {testList.map((kingdom) => (
+                {kingdomList.map((kingdom) => (
                     <>
                     <KingdomCard kingdom={kingdom} />
                     </>

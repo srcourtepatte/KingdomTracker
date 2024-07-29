@@ -22,19 +22,23 @@ const register = async (req, response) => {
               httpOnly: true,
               maxAge: 60 * 60 * 24 * 7,
               sameSite: 'none',
-              secure: true
+              secure: true,
+              path: '/'
             }));
             response.append('Set-Cookie', cookie.serialize('userId',userId, {
               httpOnly: true,
-              secure: true
+              secure: true,
+              path: '/'
             }));
             response.append('Set-Cookie', cookie.serialize('user_name', username, {
               httpOnly: true,
-              secure: true
+              secure: true,
+              path: '/'
             }));
             response.append('Set-Cookie', cookie.serialize('email', email, {
               httpOnly: true,
-              secure: true
+              secure: true,
+              path: '/'
             }));
   
             response.status(201).json({ message: 'User registered successfully'});
@@ -46,10 +50,7 @@ const register = async (req, response) => {
 };
 
 const login = async (req, response) => {
-  // code to pull info from cookies.
-    // const cookies = req.headers.cookie;
-    // const cookiearr = cookie.parse(cookies);
-    // console.log(cookiearr.email);
+
     const email = req.body.email;
     const password = req.body.password;
     response.setHeader('Access-Control-Allow-Credentials', 'true');
@@ -72,19 +73,23 @@ const login = async (req, response) => {
                 httpOnly: true,
                 maxAge: 60 * 60 * 24 * 7,
                 sameSite: 'none',
-                secure: true
+                secure: true,
+                path: '/'
               }));
               response.append('Set-Cookie', cookie.serialize('userId', userdetails.user_id, {
                 httpOnly: true,
-                secure: true
+                secure: true,
+                path: '/'
               }));
               response.append('Set-Cookie', cookie.serialize('user_name', userdetails.user_name, {
                 httpOnly: true,
-                secure: true
+                secure: true,
+                path: '/'
               }));
               response.append('Set-Cookie', cookie.serialize('email', userdetails.email, {
                 httpOnly: true,
-                secure: true
+                secure: true,
+                path: '/'
               }));
               response.status(200).json({ message: 'User login successfully' });
             });

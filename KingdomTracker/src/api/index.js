@@ -8,6 +8,8 @@ const api = axios.create({
     
 });
 
+// API calls for login and registration
+
 const login = async (email, password)=>{
     const response = api.request({
         url: '/user/login',
@@ -38,11 +40,76 @@ const register = async (username, email, password)=>{
     return response;
 };
 
+//API calls for Kingdom Aspects
 
+const getHeartlands = async()=>{
+    const response = api.request({
+        url: '/aspects/list_heartlands',
+        method: 'get',
+        withCredentials: true,
+    });
+
+    return response;
+};
+
+const getCharters = async ()=>{
+    const response = api.request({
+        url: '/aspects/list_charters',
+        method: 'get',
+        withCredentials: true,
+    });
+
+    return response;
+};
+
+const getGovernments = async ()=>{
+    const response = api.request({
+        url: 'aspects/list_governments',
+        method: 'get',
+        withCredentials: true,
+    });
+
+    return response;
+};
+
+// calls for Kingdom details
+
+const newKingdom = async (name, heartland, charter, gov, level )=>{
+    console.log(name, heartland, charter, gov, level);
+    const response = api.request({
+        url: 'kingdoms/createKingdom',
+        method: 'post',
+        data: {
+            name: name,
+            heartland: heartland,
+            charter: charter,
+            gov: gov,
+            level: level
+        },
+        withCredentials: true,
+    });
+
+    return response;
+}
+
+const getUserKingdoms = async ()=>{
+    const response = api.request({
+        url: 'kingdoms/getuserkingoms',
+        method: 'get',
+        withCredentials: true,
+    });
+
+    return response;
+};
 
 const apiCalls = {
     login,
-    register
+    register,
+    getHeartlands,
+    getCharters,
+    getGovernments,
+    getUserKingdoms,
+    newKingdom
 };
 
 export default apiCalls;
