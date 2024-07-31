@@ -25,7 +25,8 @@ const NewKingdom = ()=>{
         const free2 = sessionStorage.getItem("bonus2");
         apiCalls.newKingdom(name, heartland, charter, gov, level, free1, free2).then((result)=>{
             console.log(result);
-            // navigate(`/myKingdom/${kingdomName}`);
+            sessionStorage.clear;
+            navigate(`/myKingdom/${kingdomName}`);
         })
     }
 
