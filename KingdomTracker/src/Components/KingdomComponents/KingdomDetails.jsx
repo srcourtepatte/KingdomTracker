@@ -1,31 +1,40 @@
 import styled from "styled-components";
 
-const KingdomDetails = ()=>{
+const KingdomDetails = (data)=>{
 
     const KingdomHeader = styled.div`
         display: flex;
-        // justify-content: space-between;
+        justify-content: space-between;
+        flex-direction: row;
+        flex-wrap: wrap;
     `
 
     const KingdomName = styled.h2`
         color: gold;
-        text-align: right;
-        margin-right: 60px;
+        display: flex;
+        flex-direction: row;
+
     `;
 
 
     return (
         <KingdomHeader>
-            <KingdomName>| Kingdom: </KingdomName>
-            <KingdomName>| Level: </KingdomName>
-            <KingdomName>| EXP: </KingdomName>
-            <KingdomName>| Charter: </KingdomName>
-            <KingdomName>| Heartland: </KingdomName>
-            <KingdomName>| Government: </KingdomName>
-            <KingdomName>| Capitol: </KingdomName>
-            <KingdomName>| Fame Points: </KingdomName>
-            <KingdomName>| DC: </KingdomName>
-            <KingdomName>| Size: </KingdomName>
+            <div className="detailHeader">
+                <KingdomName>| Kingdom: {data.data.kingdom_name}</KingdomName>
+                <KingdomName>| Charter: {data.data.charter_name}</KingdomName>
+                <KingdomName>| Heartland: {data.data.heartland_name}</KingdomName>
+                <KingdomName>| Government: {data.data.government_name}</KingdomName>
+                <KingdomName>| Capitol: </KingdomName>
+            </div>
+
+            <div className="detailHeader">
+                <KingdomName>| Level: {data.data.kingdom_level}</KingdomName>
+                <KingdomName>| EXP: {data.data.kingdom_exp}</KingdomName>
+                <KingdomName>| Fame Points: {data.data.fame_points}</KingdomName>
+                <KingdomName>| DC: </KingdomName>
+                <KingdomName>| Size: </KingdomName>
+            </div>
+
 
         </KingdomHeader>
 

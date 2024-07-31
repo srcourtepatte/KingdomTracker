@@ -96,13 +96,27 @@ const newKingdom = async (name, heartland, charter, gov, level, free1, free2 )=>
 
 const getUserKingdoms = async ()=>{
     const response = api.request({
-        url: 'kingdoms/getuserkingoms',
+        url: 'kingdoms/getuserkingdoms',
         method: 'get',
         withCredentials: true,
     });
 
     return response;
 };
+
+const getKingdomSheet = async (id)=>{
+    console.log(id);
+    const response = api.request({
+        url: `kingdoms/kingdomSheet/${id}`,
+        method: 'get',
+        data: {
+            kingdom_id: id
+        },
+        withCredentials: true,
+    });
+
+    return response;
+}
 
 const apiCalls = {
     login,
@@ -111,7 +125,8 @@ const apiCalls = {
     getCharters,
     getGovernments,
     getUserKingdoms,
-    newKingdom
+    newKingdom,
+    getKingdomSheet
 };
 
 export default apiCalls;

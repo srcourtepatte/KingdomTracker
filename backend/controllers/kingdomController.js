@@ -12,7 +12,10 @@ const createKingdom = async (req, response) =>{
     
     db.promise().query("CALL createKingdom(" + cookieArr.userId + ', "' + req.body.name + '", ' + req.body.heartland + ", " + 
         req.body.charter + ", " + req.body.gov + ", " + req.body.free1 + ", " + req.body.free2 + ", " + "@o_kingdom_id)").then( async (result) =>{
-             response.status(200).json({success: true});
+            await db.promise.query("SELECT @o_kingdom_id").then(async (result) =>{
+                const kingdom_id = result[0][0];
+                response.status(200).json({success: true, data: kingdom_id});
+            });
         }).catch((err) =>{
             response.status(401).json({success: false, message: err});
             console.log(err);});
@@ -34,5 +37,15 @@ const getUserKingdoms = async (req, response) =>{
     });
 };
 
+const getKingdomSheet = async (req, response) =>{
+    db.promise().query("CALL getKingdomDetails(" + req.params.id + ")").then(async (result)=>{
+        console.log(result[0][0]);
+        response.status(200).json({success: true, data: result[0][0]});
+    }).catch((err)=>{
+        response.status(401).json({success: false, message: err});
+    });
+};
 
-module.exports = {createKingdom, getUserKingdoms};
+
+
+module.exports = {createKingdom, getUserKingdoms, getKingdomSheet};

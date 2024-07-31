@@ -207,3 +207,13 @@
 .selected{
     border: 3px solid gold;
 }
+
+
+.detailHeader{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+
+
+}

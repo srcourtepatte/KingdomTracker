@@ -26,7 +26,8 @@ const NewKingdom = ()=>{
         apiCalls.newKingdom(name, heartland, charter, gov, level, free1, free2).then((result)=>{
             console.log(result);
             sessionStorage.clear;
-            navigate(`/myKingdom/${kingdomName}`);
+            const id = result.response.data;
+            navigate(`/myKingdom/${kingdomName}/${id}`);
         })
     }
 

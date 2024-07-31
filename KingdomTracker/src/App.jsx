@@ -14,7 +14,7 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/mykingdom/:kingdomName" element={<MyKingdom />} />
+          <Route path="/mykingdom/:kingdomName/:id" element={<MyKingdom />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/dashboard" element={<UserDash />} />

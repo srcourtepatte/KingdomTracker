@@ -6,15 +6,16 @@ const LoginForm = ()=>{
     const navigate = useNavigate();
 
     const handleSubmit = ()=>{
+        alert("logging IN!");
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
 
 
         apiCalls.login(email, password).then((res)=>{
-            console.log(res);
-            console.log(document.cookie);
             navigate("/dashboard");
-        }).catch((err) =>{console.log(err);});
+        }).catch((err) =>{
+            alert(err);
+            console.log(err);});
 
     };
 
