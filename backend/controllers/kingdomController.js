@@ -11,10 +11,11 @@ const createKingdom = async (req, response) =>{
     console.log(req.body);
     
     db.promise().query("CALL createKingdom(" + cookieArr.userId + ', "' + req.body.name + '", ' + req.body.heartland + ", " + 
-        req.body.charter + ", " + req.body.gov + ", @o_kingdom_id)").then( async (result) =>{
-            console.log(result);
+        req.body.charter + ", " + req.body.gov + ", " + req.body.free1 + ", " + req.body.free2 + ", " + "@o_kingdom_id)").then( async (result) =>{
              response.status(200).json({success: true});
-        }).catch((err) =>{console.log(err);});
+        }).catch((err) =>{
+            response.status(401).json({success: false, message: err});
+            console.log(err);});
    
 };
 
