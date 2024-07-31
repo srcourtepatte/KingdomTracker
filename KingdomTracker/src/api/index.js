@@ -74,7 +74,7 @@ const getGovernments = async ()=>{
 
 // calls for Kingdom details
 
-const newKingdom = async (name, heartland, charter, gov, level )=>{
+const newKingdom = async (name, heartland, charter, gov, level, free1, free2 )=>{
     console.log(name, heartland, charter, gov, level);
     const response = api.request({
         url: 'kingdoms/createKingdom',
@@ -84,7 +84,9 @@ const newKingdom = async (name, heartland, charter, gov, level )=>{
             heartland: heartland,
             charter: charter,
             gov: gov,
-            level: level
+            level: level,
+            free1: free1,
+            free2: free2
         },
         withCredentials: true,
     });
