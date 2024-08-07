@@ -38,7 +38,7 @@
 
 .statForm {
     display: grid;
-    column-gap: 10px;
+    column-gap: 5px;
     row-gap: 5px;
     column-rule: 10px;
     margin-top: 30px;
@@ -46,6 +46,7 @@
     border: 1px solid gold;
     width: 40%;
     padding-bottom: 5px;
+    padding: 15px;
     margin-left: 15px;
     
 }

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const KingdomDetails = (data)=>{
+    console.log(data.data);
 
     const KingdomHeader = styled.div`
         display: flex;

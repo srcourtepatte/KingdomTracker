@@ -39,12 +39,21 @@ const getUserKingdoms = async (req, response) =>{
 
 const getKingdomSheet = async (req, response) =>{
     db.promise().query("CALL getKingdomDetails(" + req.params.id + ")").then(async (result)=>{
-        console.log(result[0][0]);
-        response.status(200).json({success: true, data: result[0][0]});
+        const data = result[0][0];
+        await db.promise().query("CALL getKingdomAbilities(" + req.params.id + ")").then( async (result)=>{
+            data.push(result[0][0]);
+            await db.promise().query("CALL getKingdomRuin(" + req.params.id + ")").then(async (result)=>{
+                data.push(result[0][0]);
+                await db.promise().query("CALL getKingdomSkills(" + req.params.id + ")").then(async (result)=>{
+                    console.log(result[0][0]);
+                    data.push(result[0][0]);
+                    response.status(200).json({success: true, data: data}); 
+                });
+        });        
     }).catch((err)=>{
-        response.status(401).json({success: false, message: err});
+        response.status(401).json({success: false, message: err});});
     });
-};
+    };
 
 
 
