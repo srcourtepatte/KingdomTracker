@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import apiCalls from "../api";
 import { ChooseCharter, ChooseHeartland, ChooseGov, FinalDetails } from "../Components";
 import { useState } from "react";
+
 
 const NewKingdom = ()=>{
 
@@ -14,8 +16,9 @@ const NewKingdom = ()=>{
     const handleBack = ()=>{
         setCurrPage(currPage -1);
     }
-
+    const navigate = useNavigate();
     const submit = ()=>{
+        
         const name = sessionStorage.getItem("name");
         const heartland = sessionStorage.getItem("heartland");
         const charter = sessionStorage.getItem("Charter");
@@ -24,10 +27,10 @@ const NewKingdom = ()=>{
         const free1 = sessionStorage.getItem("bonus1");
         const free2 = sessionStorage.getItem("bonus2");
         apiCalls.newKingdom(name, heartland, charter, gov, level, free1, free2).then((result)=>{
-            console.log(result);
+            console.log(result.data.data.id);
+            const id = result.data.data.id;
             sessionStorage.clear;
-            const id = result.response.data;
-            navigate(`/myKingdom/${kingdomName}/${id}`);
+            navigate(`/myKingdom/${name}/${id}`);
         })
     }
 
