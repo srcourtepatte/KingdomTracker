@@ -12,7 +12,7 @@ const createKingdom = async (req, response) =>{
     
     db.promise().query("CALL createKingdom(" + cookieArr.userId + ', "' + req.body.name + '", ' + req.body.heartland + ", " + 
         req.body.charter + ", " + req.body.gov + ", " + req.body.free1 + ", " + req.body.free2 + ", " + "@o_kingdom_id)").then( async (result) =>{
-            await db.promise.query("SELECT @o_kingdom_id").then(async (result) =>{
+            await db.promise().query("SELECT @o_kingdom_id").then(async (result) =>{
                 const kingdom_id = result[0][0];
                 response.status(200).json({success: true, data: kingdom_id});
             });
