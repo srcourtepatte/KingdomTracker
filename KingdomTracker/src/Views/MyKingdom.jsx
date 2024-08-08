@@ -21,10 +21,10 @@ const MyKingdom = ()=>{
         if(!calledAPI.current){
             calledAPI.current = true;
             
-            console.log(id);
             apiCalls.getKingdomSheet(id).then((result)=>{
                 console.log(result.data.data);
                 setData(result.data.data);
+
             })
         }
     }, [])
@@ -47,10 +47,10 @@ const MyKingdom = ()=>{
             <div className="kingdomSheet">
                 <KingdomStats data={data[1]}/>
                 <RuinStat data={data[2]}/>
-                <Leaders />
+                <Leaders data={data[5]}/>
                 
-                <KingdomSkills data={data[3]}/>
-                <Commodities />
+                <KingdomSkills data={[data[3], data[0].kingdom_level]}/>
+                <Commodities data={data[4]}/>
             </div>
         </> :
 

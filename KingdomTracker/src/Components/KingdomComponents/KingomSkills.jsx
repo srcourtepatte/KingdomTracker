@@ -1,17 +1,12 @@
 import '../../style/main.css';
 
 const KingdomSkills = (data)=>{
-console.log(data.data);
-    const skillList = [
-        "Agriculture", "Arts", "Boating", "Defense", "Engineering", "Exploration", "Folklore", "Industry",
-        "Intrigue", "Magic", "Politics", "Scholarship", "Statecraft", "Trade", "Warfare", "Wilderness"
-    ]
+
     let trained_val_arr = [];
 
     for(let i = 0; i < 16; i++)
     {
-        console.log(data.data[i].training_level);
-        switch(data.data[i].training_level){
+        switch(data.data[0][i].training_level){
             case "untrained":
                 trained_val_arr.push("0");
             break;
@@ -30,7 +25,6 @@ console.log(data.data);
         }
     };
 
-    console.log(trained_val_arr);
 
     return (
         <div className='statForm'>
@@ -39,20 +33,29 @@ console.log(data.data);
             <label className='label item2'>Total</label>
             <label className='label item3'>Prof</label>
             <label className='label item4'>Training</label>
+            <label className='label item5'>Modifier</label>
 
-            {data.data.map((skill, index) => (
+            {data.data[0].map((skill, index) => (
                 <>
                 <label className='nameLabel'>{skill.skill_name}</label>
                 <div className='statBox'>
-                    {parseInt(skill.proficiency) + parseInt(trained_val_arr[index])}
+                    <h1>
+                        {parseInt(skill.proficiency) + parseInt(trained_val_arr[index]) + parseInt(skill.ability_modifier) + parseInt(data.data[1])}
+                    </h1>
+                    
                 </div>
                 <div className='statBox'>
                     <h1>
-                        {skill.proficiency}
+                        {parseInt(skill.proficiency) + parseInt(trained_val_arr[index]) + parseInt(data.data[1])}
                     </h1>
                 </div>
                 <div className='statBox'>
                     <h1>{skill.training_level.charAt(0)}</h1>
+                </div>
+                <div className='statBox'>
+                    <h1>
+                        {skill.ability_modifier}
+                    </h1>
                 </div>
                 </>
                 

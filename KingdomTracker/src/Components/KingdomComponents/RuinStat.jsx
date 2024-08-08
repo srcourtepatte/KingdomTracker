@@ -1,7 +1,6 @@
 import '../../style/main.css';
 
 const RuinStat = (data)=>{
-console.log(data.data);
 
     return (
         <form className='statForm'>
