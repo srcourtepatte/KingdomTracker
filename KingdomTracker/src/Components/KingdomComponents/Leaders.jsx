@@ -1,7 +1,7 @@
 import '../../style/main.css';
 
-const Leaders = ()=>{
-
+const Leaders = (data)=>{
+console.log(data.data);
     const positions = [
         "Ruler", "Counselor", "General",  "Emissary", "Magister", "Treasurer", "Viceroy", "Warden"
     ]
@@ -9,10 +9,10 @@ const Leaders = ()=>{
 
     return (
         <div className='statForm'>
-            {positions.map((position) => (
+            {data.data.map((position) => (
                 <>
-                <label className='nameLabel item1'>{position}</label>
-                <label className='label item2'>Leader Name</label>
+                <label className='nameLabel item1'>{position.role_name}</label>
+                <label className='label item2'>{position.leader_name}</label>
                 </>   
             ))}
         </div>

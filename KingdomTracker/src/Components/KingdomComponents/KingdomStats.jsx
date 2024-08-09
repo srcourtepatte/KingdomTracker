@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import '../../style/main.css'
 
-const KingdomStats = ()=>{
-
+const KingdomStats = (data)=>{
+ 
 
     return (
         <form className="statForm">
@@ -12,35 +12,35 @@ const KingdomStats = ()=>{
                 <label className="label item3">Modifier</label>
 
                 <div className="statBox">
-                    <h1></h1>   
+                    <h1>{data.data[0].ability_score}</h1>   
                 </div>
-                <label className="nameLabel">| Culture |</label>
+                <label className="nameLabel">| {data.data[0].ability_name} |</label>
                 <div className="statBox">
-                    <h1></h1>   
-                </div>
-            
-                <div className="statBox">
-                    <h1></h1>   
-                </div>
-                <label className="nameLabel">| Economy |</label>
-                <div className="statBox">
-                    <h1></h1>   
+                    <h1>{data.data[0].ability_modifier}</h1>   
                 </div>
             
                 <div className="statBox">
-                 <h1></h1>   
+                    <h1>{data.data[1].ability_score}</h1>   
                 </div>
-                <label className="nameLabel">| Loyalty |</label>
+                <label className="nameLabel">| {data.data[1].ability_name} |</label>
                 <div className="statBox">
-                    <h1></h1>   
+                    <h1>{data.data[1].ability_modifier}</h1>   
+                </div>
+           
+                <div className="statBox">
+                 <h1>{data.data[2].ability_score}</h1>   
+                </div>
+                <label className="nameLabel">| {data.data[2].ability_name} |</label>
+                <div className="statBox">
+                    <h1>{data.data[2].ability_modifier}</h1>   
                 </div>
             
                 <div className="statBox">
-                    <h1></h1>   
+                    <h1>{data.data[3].ability_score}</h1>   
                 </div>
-                <label className="nameLabel">| Stability |</label>
+                <label className="nameLabel">| {data.data[3].ability_name} |</label>
                 <div className="statBox">
-                    <h1></h1>   
+                    <h1>{data.data[3].ability_modifier}</h1>   
                 </div>
             
         </form>

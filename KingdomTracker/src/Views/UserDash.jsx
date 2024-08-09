@@ -16,7 +16,6 @@ const UserDash = ()=>{
         {
             calledAPI.current = true;
             apiCalls.getUserKingdoms().then((result)=>{
-                console.log(result.data.data);
                 setKingdomList(result.data.data);
             });
         }

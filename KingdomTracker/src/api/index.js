@@ -105,15 +105,12 @@ const getUserKingdoms = async ()=>{
 };
 
 const getKingdomSheet = async (id)=>{
-    console.log(id);
-    const response = api.request({
+    const response = await api.request({
         url: `kingdoms/kingdomSheet/${id}`,
         method: 'get',
-        data: {
-            kingdom_id: id
-        },
         withCredentials: true,
     });
+
 
     return response;
 }
