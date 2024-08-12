@@ -62,6 +62,16 @@ const getKingdomSheet = async (req, response) =>{
     });
     };
 
+    const getLeaders = async (req, response) =>{
+        db.promise().query("SELECT * from getKingdomLeaders where kingdom_id = " + req.params.id).then( async (result)=>{
+            console.log(result[0]);
+            console.log(result[0][0]);
+            
+            response.status(200).json({success: true, data: result[0]});
+        }).catch((err)=>{
+            response.status(401).json({success: false, message: err});
+        });
+    };
 
 
-module.exports = {createKingdom, getUserKingdoms, getKingdomSheet};
+module.exports = {createKingdom, getUserKingdoms, getKingdomSheet, getLeaders};

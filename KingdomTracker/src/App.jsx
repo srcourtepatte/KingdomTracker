@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import { Homepage, MyKingdom, Login, UserDash, NewKingdom } from './Views'
+import { Homepage, MyKingdom, Login, UserDash, NewKingdom, EditLeaderPage } from './Views'
 import { NavBar } from './Components';
 import Registration from './Views/Registration';
 
@@ -19,6 +19,7 @@ function App() {
           <Route path="/register" element={<Registration />} />
           <Route path="/dashboard" element={<UserDash />} />
           <Route path="/newKingdom" element={<NewKingdom />} />
+          <Route path="/edit-leaders/:id" element={<EditLeaderPage />}/>
         </Routes>
       </BrowserRouter>
     </div>

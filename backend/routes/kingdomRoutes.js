@@ -6,5 +6,6 @@ const { authMiddleware } = require('../auth');
 router.post('/createKingdom', authMiddleware, kingdomController.createKingdom );
 router.get('/getuserkingdoms', authMiddleware, kingdomController.getUserKingdoms);
 router.get('/kingdomSheet/:id', authMiddleware, kingdomController.getKingdomSheet);
+router.get('/leaders/:id', authMiddleware, kingdomController.getLeaders);
 
 module.exports = router;

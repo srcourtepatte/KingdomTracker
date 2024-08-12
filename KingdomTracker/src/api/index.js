@@ -92,7 +92,7 @@ const newKingdom = async (name, heartland, charter, gov, level, free1, free2 )=>
     });
 
     return response;
-}
+};
 
 const getUserKingdoms = async ()=>{
     const response = api.request({
@@ -113,7 +113,19 @@ const getKingdomSheet = async (id)=>{
 
 
     return response;
-}
+};
+
+//call to get leader roles
+const getLeaders = async(id)=>{
+    const response = await api.request({
+        url: `kingdoms/leaders/${id}`,
+        method: 'get',
+        withCredentials: true,
+    });
+
+    return response;
+
+};
 
 const apiCalls = {
     login,
@@ -123,7 +135,8 @@ const apiCalls = {
     getGovernments,
     getUserKingdoms,
     newKingdom,
-    getKingdomSheet
+    getKingdomSheet,
+    getLeaders
 };
 
 export default apiCalls;

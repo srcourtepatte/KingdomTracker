@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { KingdomDetails, KingdomSkills, KingdomStats, RuinStat, Leaders, Commodities, Features } from "../Components";
 import { useEffect, useRef, useState } from "react";
 import apiCalls from "../api";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const MyKingdom = ()=>{
 
@@ -11,6 +11,7 @@ const MyKingdom = ()=>{
     const { id } = useParams(); 
     const [data, setData] = useState(["null"]);
     const [abilities, setAbilities] = useState([]);
+    const navigate = useNavigate();
     
     const handleTabChange = (newTab)=>{
 
@@ -27,7 +28,12 @@ const MyKingdom = ()=>{
 
             })
         }
-    }, [])
+    }, []);
+
+    const updateLeaders = ()=>{
+        
+        navigate(`/edit-leaders/${id}`);
+    }
 
 
     return (
@@ -47,7 +53,7 @@ const MyKingdom = ()=>{
             <div className="kingdomSheet">
                 <KingdomStats data={data[1]}/>
                 <RuinStat data={data[2]}/>
-                <Leaders data={data[5]}/>
+                <Leaders data={data[5]} onClick={updateLeaders} formType="view"/>
                 
                 <KingdomSkills data={[data[3], data[0].kingdom_level]}/>
                 <Commodities data={data[4]}/>

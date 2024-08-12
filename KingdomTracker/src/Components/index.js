@@ -13,7 +13,8 @@ import ChooseCharter from "./KingdomCreationForms/ChooseCharter";
 import ChooseGov from "./KingdomCreationForms/ChooseGov";
 import ChooseHeartland from "./KingdomCreationForms/ChooseHeartland";
 import FinalDetails from "./KingdomCreationForms/FinalDetails";
+import EditLeaders from "./editForms/EditLeaders"
 
 export {NavBar, KingdomDetails, KingdomStats, RuinStat, KingdomSkills, Leaders, Commodities, Features,
-    LoginForm, Register, KingdomCard, ChooseCharter, ChooseGov, ChooseHeartland, FinalDetails
+    LoginForm, Register, KingdomCard, ChooseCharter, ChooseGov, ChooseHeartland, FinalDetails, EditLeaders
 };
