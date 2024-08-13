@@ -13,7 +13,7 @@ function App() {
       <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route path="/" element={<Homepage />} />
+          <Route path="/" element={<Login />} />
           <Route path="/mykingdom/:kingdomName/:id" element={<MyKingdom />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />

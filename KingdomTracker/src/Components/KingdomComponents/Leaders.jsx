@@ -1,5 +1,7 @@
+import { useParams } from 'react-router-dom';
 import '../../style/main.css';
 import { useState } from 'react';
+import apiCalls from '../../api';
 
 const Leaders = ({data, onClick, formType})=>{
     console.log(data);
@@ -52,7 +54,7 @@ const Leaders = ({data, onClick, formType})=>{
 
         if (formType === "edit") {
             for(let i = 0; i < 8; i++){
-                if(data[i].role_name === e.target.value){
+                if(data[i].role_name === e.target.id){
                     if(e.target.checked){
                         data[i].invested = 1;
                     }
@@ -66,6 +68,15 @@ const Leaders = ({data, onClick, formType})=>{
         console.log(data);
         
     }
+const { id } = useParams();
+    const updateLeaders = ()=>{
+       
+        apiCalls.updateLeaders(id, data).then((result)=>{
+            console.log(result);
+            
+        });
+
+    }
 
     return (
         <div className='statForm'>
@@ -78,11 +89,11 @@ const Leaders = ({data, onClick, formType})=>{
                 <>
                 <input type="checkbox" name="invested" id={position.role_name} className='item1' defaultChecked={checkInvestment(position)} onClick={(e) =>{updateInvestment(e)}}/>
                 <label className='nameLabel item2'>{position.role_name}</label>
-                <input type="text" className='item3 leaderNames' id={position.role_name} value={position.leader_name} disabled={checkFormType()} onChange={(e) =>{handleNameUpdate(e)}}/>
+                <input type="text" className='item3 leaderNames' id={position.role_name} defaultValue={position.leader_name} disabled={checkFormType()} onChange={(e) =>{handleNameUpdate(e)}}/>
                 </>   
             ))}
             <input type="button" name="update" id="update" className='goodButton' value="Update" onClick={onClick} hidden={!checkFormType()}/>
-            <input type="button" name="save" id="save" className='goodButton' value="Save" hidden={checkFormType()}/>
+            <input type="button" name="save" id="save" className='goodButton' value="Save" hidden={checkFormType()} onClick={updateLeaders}/>
         </div>
     );
 };
