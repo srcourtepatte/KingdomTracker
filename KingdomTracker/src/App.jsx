@@ -19,7 +19,7 @@ function App() {
           <Route path="/register" element={<Registration />} />
           <Route path="/dashboard" element={<UserDash />} />
           <Route path="/newKingdom" element={<NewKingdom />} />
-          <Route path="/edit-leaders/:id" element={<EditLeaderPage />}/>
+          <Route path="/edit-leaders/:kingdomName/:id" element={<EditLeaderPage />}/>
         </Routes>
       </BrowserRouter>
     </div>

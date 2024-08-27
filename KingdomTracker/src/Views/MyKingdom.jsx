@@ -9,6 +9,7 @@ const MyKingdom = ()=>{
     const [currentTab, setCurrentTab] = useState('Kingdom Sheet');
     const calledAPI = useRef(false);
     const { id } = useParams(); 
+    const { kingdomName } = useParams();
     const [data, setData] = useState(["null"]);
     const [abilities, setAbilities] = useState([]);
     const navigate = useNavigate();
@@ -31,8 +32,7 @@ const MyKingdom = ()=>{
     }, []);
 
     const updateLeaders = ()=>{
-        
-        navigate(`/edit-leaders/${id}`);
+        navigate(`/edit-leaders/${kingdomName}/${id}`);
     }
 
 

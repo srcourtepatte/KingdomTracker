@@ -1,9 +1,14 @@
 import { useParams } from 'react-router-dom';
-import '../../style/main.css';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import '../../style/main.css';
 import apiCalls from '../../api';
 
+
 const Leaders = ({data, onClick, formType})=>{
+    const { id } = useParams();  
+    const { kingdomName } = useParams();
+    const navigate = useNavigate();  
     console.log(data);
     console.log(formType);
         
@@ -68,14 +73,13 @@ const Leaders = ({data, onClick, formType})=>{
         console.log(data);
         
     }
-const { id } = useParams();
+
     const updateLeaders = ()=>{
-       
         apiCalls.updateLeaders(id, data).then((result)=>{
             console.log(result);
-            
+            navigate(`/myKingdom/${kingdomName}/${id}`);        
         });
-
+        
     }
 
     return (

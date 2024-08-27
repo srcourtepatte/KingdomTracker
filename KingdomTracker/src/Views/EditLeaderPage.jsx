@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import apiCalls from "../api";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Leaders } from "../Components";
 
 
@@ -21,10 +21,9 @@ const editLeaderPage = ()=>{
 
     }, []);
 
-
     return(
         <div>
-           <Leaders data={leaderData} formType="edit"/> 
+           <Leaders data={leaderData} formType="edit" /> 
         </div>
         
     );
