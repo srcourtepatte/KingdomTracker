@@ -92,7 +92,7 @@ const newKingdom = async (name, heartland, charter, gov, level, free1, free2 )=>
     });
 
     return response;
-}
+};
 
 const getUserKingdoms = async ()=>{
     const response = api.request({
@@ -113,6 +113,76 @@ const getKingdomSheet = async (id)=>{
 
 
     return response;
+};
+
+//call to get leader roles
+const getLeaders = async(id)=>{
+    const response = await api.request({
+        url: `kingdoms/leaders/${id}`,
+        method: 'get',
+        withCredentials: true,
+    });
+
+    return response;
+
+};
+
+const updateLeaders = async(id, body) =>{
+    console.log(id);
+    console.log(body);
+    const response = await api.request({
+        url: `kingdoms/leaders/update/${id}`,
+        method: 'post',
+        data: {
+            id: body[0].kingdom_id,
+            leaderData:
+            [
+                {
+                    role: body[0].role_id,
+                    name: body[0].leader_name,
+                    invested: body[0].invested
+                },
+                {
+                    role: body[1].role_id,
+                    name: body[1].leader_name,
+                    invested: body[1].invested
+                },
+                {
+                    role: body[2].role_id,
+                    name: body[2].leader_name,
+                    invested: body[2].invested
+                },
+                {
+                    role: body[3].role_id,
+                    name: body[3].leader_name,
+                    invested: body[3].invested
+                },
+                {
+                    role: body[4].role_id,
+                    name: body[4].leader_name,
+                    invested: body[4].invested
+                },
+                {
+                    role: body[5].role_id,
+                    name: body[5].leader_name,
+                    invested: body[5].invested
+                },
+                {
+                    role: body[6].role_id,
+                    name: body[6].leader_name,
+                    invested: body[6].invested
+                },
+                {
+                    role: body[7].role_id,
+                    name: body[7].leader_name,
+                    invested: body[7].invested
+                },
+            ]
+        },
+        withCredentials: true,
+    });
+    
+    return response;
 }
 
 const apiCalls = {
@@ -123,7 +193,9 @@ const apiCalls = {
     getGovernments,
     getUserKingdoms,
     newKingdom,
-    getKingdomSheet
+    getKingdomSheet,
+    getLeaders,
+    updateLeaders
 };
 
 export default apiCalls;

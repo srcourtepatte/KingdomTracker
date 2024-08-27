@@ -1,7 +1,6 @@
 import '../../style/main.css';
 
 const Commodities = (data)=>{
-    console.log(data.data);
 
     return (
         <div className='statForm'>
