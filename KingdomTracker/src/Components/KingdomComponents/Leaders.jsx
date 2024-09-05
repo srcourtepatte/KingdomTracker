@@ -25,14 +25,11 @@ const Leaders = ({data, onClick, formType})=>{
 
     const checkFormType = ()=>{
         if(formType === "edit")
-        {
-            console.log("edit");
-            
+        {           
             return "";
         }
         if(formType === "view")
         {
-            console.log("disabled");
             return "true";
         }
     }
@@ -40,12 +37,8 @@ const Leaders = ({data, onClick, formType})=>{
     const handleNameUpdate = (e)=>{
         for(let i = 0; i < data.length; i++){
             if(data[i].role_name === e.target.id)
-            {
-                console.log(e.target.value);
-                
+            {                
                 data[i].leader_name = e.target.value;
-                console.log(data);
-                
             };
         };
     }
@@ -76,7 +69,6 @@ const Leaders = ({data, onClick, formType})=>{
 
     const updateLeaders = ()=>{
         apiCalls.updateLeaders(id, data).then((result)=>{
-            console.log(result);
             navigate(`/myKingdom/${kingdomName}/${id}`);        
         });
         

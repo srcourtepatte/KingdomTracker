@@ -86,8 +86,20 @@ const getKingdomSheet = async (req, response) =>{
 
         ).then( async (result)=>{
             response.status(200).json({success: true});
-        }).catch((err)=>{response.status(401).json({success: false, message: err})});    
+        }).catch((err)=>{response.status(400).json({success: false, message: err})});    
+    }
+
+    const updateKingdomResources = async (req, response) =>{
+        const data = req.body;
+        console.log(data);
+
+        db.promise().query("CALL updateKingdomResources(" + req.params.id + ", " + data.food + ", "
+            + data.lumber + ", " + data.luxuries + ", " + data.ore + ", " + data.stone + ")"
+        ).then(async (result)=>{
+            response.status(200).json({success: true});
+        }).catch((err)=>{response.status(400).json({success: false, message: err})});
+        
     }
 
 
-module.exports = {createKingdom, getUserKingdoms, getKingdomSheet, getLeaders, updateLeaders};
+module.exports = {createKingdom, getUserKingdoms, getKingdomSheet, getLeaders, updateLeaders, updateKingdomResources};
