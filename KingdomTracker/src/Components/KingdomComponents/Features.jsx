@@ -8,6 +8,7 @@ const Feats = ({TableType})=>{
     const [data, setData] = useState([]);
     const [featList, setFeatList] = useState([]);
     const apiCalled = useRef(false);
+    const [currFeat, setCurrFeat] = useState();
 
 
     if (TableType === "FEATS") {
@@ -24,8 +25,33 @@ const Feats = ({TableType})=>{
     };
 
     const addnewFeat = ()=>{
-        console.log("adding feat");
+        const newFeatDiv = document.getElementById('newFeatDiv');
+        newFeatDiv.classList.remove('hidden');
+    }
 
+    const hideFeats = ()=>{
+        const newFeatDiv = document.getElementById('newFeatDiv');
+        newFeatDiv.classList.add('hidden');
+    }
+
+    const selectDiv = (id)=>{
+        
+        if(currFeat != null)
+        {
+            const selection = document.getElementById(currFeat);
+            selection.classList.remove("selected");
+        }
+
+        const selection = document.getElementById(id);
+        selection.classList.add("selected");
+        setCurrFeat(id);
+    }
+
+    const saveFeat = ()=>{
+        apiCalls.addKingdomFeat(id, currFeat).then((result)=>{
+            setCurrFeat(null);
+            hideFeats();
+        })
     }
     
     
@@ -43,13 +69,18 @@ const Feats = ({TableType})=>{
                 ))}
                 <input type="button" value="+ Add Feat" onClick={addnewFeat} className='goodButton'/>
             </div>
-            <div className='newFeatList' hidden={addingFeat}>
+            <div className='newFeatList hidden' id='newFeatDiv'>
                 {featList.map((feat) => (
-                    <div>
+                    <div onClick={(e)=>{selectDiv(feat.feat_id)}} id={feat.feat_id}>
                         <h1>{feat.feat_name}</h1>
                         <p>{feat.feat_description}</p>
                     </div>
                 ))}
+                <div className='buttonContainer'>
+                    <input type="button" value="Cancel" className='badButton' onClick={hideFeats}/>
+                    <input type="button" value="Add Feat" className='goodButton' onClick={saveFeat}/>
+                </div>
+
             </div>
          </>
  :
