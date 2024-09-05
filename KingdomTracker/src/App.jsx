@@ -5,8 +5,6 @@ import Registration from './Views/Registration';
 
 
 function App() {
-  
-  document.body.style = 'background: rgb(3, 40, 25)';
 
   return (
     <div id="Page">

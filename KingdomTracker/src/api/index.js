@@ -77,7 +77,7 @@ const getGovernments = async ()=>{
 const newKingdom = async (name, heartland, charter, gov, level, free1, free2 )=>{
     console.log(name, heartland, charter, gov, level);
     const response = api.request({
-        url: 'kingdoms/createKingdom',
+        url: 'kingdom/createKingdom',
         method: 'post',
         data: {
             name: name,
@@ -96,7 +96,7 @@ const newKingdom = async (name, heartland, charter, gov, level, free1, free2 )=>
 
 const getUserKingdoms = async ()=>{
     const response = api.request({
-        url: 'kingdoms/getuserkingdoms',
+        url: 'kingdom/getuserkingdoms',
         method: 'get',
         withCredentials: true,
     });
@@ -106,7 +106,7 @@ const getUserKingdoms = async ()=>{
 
 const getKingdomSheet = async (id)=>{
     const response = await api.request({
-        url: `kingdoms/kingdomSheet/${id}`,
+        url: `kingdom/kingdomSheet/${id}`,
         method: 'get',
         withCredentials: true,
     });
@@ -118,7 +118,7 @@ const getKingdomSheet = async (id)=>{
 //call to get leader roles
 const getLeaders = async(id)=>{
     const response = await api.request({
-        url: `kingdoms/leaders/${id}`,
+        url: `kingdom/leaders/${id}`,
         method: 'get',
         withCredentials: true,
     });
@@ -131,7 +131,7 @@ const updateLeaders = async(id, body) =>{
     console.log(id);
     console.log(body);
     const response = await api.request({
-        url: `kingdoms/leaders/update/${id}`,
+        url: `kingdom/leaders/update/${id}`,
         method: 'post',
         data: {
             id: body[0].kingdom_id,
@@ -218,6 +218,24 @@ const getAllFeats = async() =>{
     return response;
 }
 
+const updateKingdomResources = async(id, food, lumber, luxuries, ore, stone)=>{
+
+    const response = await api.request({
+        url: `kingdom/resources/update/${id}`,
+        method: 'post',
+        data: {
+            food: food,
+            lumber: lumber,
+            luxuries: luxuries,
+            ore: ore,
+            stone: stone
+        },
+        withCredentials: true,
+    });
+
+    return response;
+}
+
 const apiCalls = {
     login,
     register,
@@ -232,6 +250,7 @@ const apiCalls = {
     getKingdomFeats,
     addKingdomFeat,
     getAllFeats,
+    updateKingdomResources,
 };
 
 export default apiCalls;
