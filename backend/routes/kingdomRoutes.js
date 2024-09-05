@@ -9,5 +9,6 @@ router.get('/kingdomSheet/:id', authMiddleware, kingdomController.getKingdomShee
 router.get('/leaders/:id', authMiddleware, kingdomController.getLeaders);
 router.post('/leaders/update/:id', authMiddleware, kingdomController.updateLeaders);
 router.post('/resources/update/:id', authMiddleware, kingdomController.updateKingdomResources);
+router.post('/ruin/update/:id', authMiddleware, kingdomController.updateKingdomRuin);
 
 module.exports = router;
