@@ -185,6 +185,39 @@ const updateLeaders = async(id, body) =>{
     return response;
 }
 
+const getKingdomFeats = async(id)=>{
+    const response = await api.request({
+        url : `features/kingdomfeats/${id}`,
+        method: 'get',
+        withCredentials: true,
+    });
+
+    return response;
+};
+
+const addKingdomFeat = async(id, feat)=>{
+    const response = await api.request({
+        url: `features/${id}/addFeat`,
+        method: 'post',
+        data: {
+            feat: feat
+        },
+        withCredentials: true,
+    });
+
+    return response;
+}
+
+const getAllFeats = async() =>{
+    const response = await api.request({
+        url: `features/allfeats`,
+        method: 'get',
+        withCredentials: true,
+    });
+
+    return response;
+}
+
 const apiCalls = {
     login,
     register,
@@ -195,7 +228,10 @@ const apiCalls = {
     newKingdom,
     getKingdomSheet,
     getLeaders,
-    updateLeaders
+    updateLeaders,
+    getKingdomFeats,
+    addKingdomFeat,
+    getAllFeats,
 };
 
 export default apiCalls;

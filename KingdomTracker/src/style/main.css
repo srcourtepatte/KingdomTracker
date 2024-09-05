@@ -51,6 +51,24 @@
     
 }
 
+.newFeatList {
+    display: grid;
+    column-gap: 5px;
+    row-gap: 5px;
+    background-color: rgb(91, 127, 52);
+    border: 1px solid gold;
+    width: 60%;
+    position: absolute;
+    /* z-index: 15; */
+    margin-top: 30px;
+    margin-left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.hidden {
+    visibility: collapse;
+}
+
 .item1 {
     grid-column: 1;
 }
