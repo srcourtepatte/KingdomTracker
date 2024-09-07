@@ -18,10 +18,13 @@ const RuinStat = (data)=>{
     }
 
     const decrementRuin = (e)=>{
-        clearTimeout(updateTimer);
-        setUpdateTimer(setTimeout(updateRuin, 15000));
-        data.data[e.target.id].ruin_score -= 1;
-        setCurrQuantity(data.data[e.target.id].ruin_score);
+        if(parseInt(data.data[e.target.id].ruin_score) > 0){
+            clearTimeout(updateTimer);
+            setUpdateTimer(setTimeout(updateRuin, 15000));
+            data.data[e.target.id].ruin_score -= 1;
+            setCurrQuantity(data.data[e.target.id].ruin_score);
+        }
+        
     }
 
     const incrementPenalty = (e)=>{
