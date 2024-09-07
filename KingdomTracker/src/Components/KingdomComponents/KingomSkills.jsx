@@ -37,7 +37,7 @@ const KingdomSkills = (data)=>{
 
             {data.data[0].map((skill, index) => (
                 <>
-                <label className='nameLabel'>{skill.skill_name}</label>
+                <label className='nameLabel' >{skill.skill_name}</label>
                 <div className='statBox'>
                     <h1>
                         {parseInt(skill.proficiency) + parseInt(trained_val_arr[index]) + parseInt(skill.ability_modifier) + parseInt(data.data[1])}

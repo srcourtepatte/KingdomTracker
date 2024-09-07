@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const KingdomDetails = (data)=>{
-    console.log(data.data);
     let dc;
     const klevel = parseInt(data.data.kingdom_level);
     const KingdomHeader = styled.div`

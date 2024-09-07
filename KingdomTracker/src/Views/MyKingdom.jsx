@@ -24,7 +24,6 @@ const MyKingdom = ()=>{
             calledAPI.current = true;
             
             apiCalls.getKingdomSheet(id).then((result)=>{
-                console.log(result.data.data);
                 setData(result.data.data);
 
             })

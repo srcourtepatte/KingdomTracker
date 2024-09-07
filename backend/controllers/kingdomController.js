@@ -115,5 +115,19 @@ const updateKingdomRuin = async (req, response) =>{
     
 }
 
+const updateKingdomScores = async (req, response) =>{
+    const data = req.body;
+    console.log(data);
+    
+    db.promise().query("CALL updateAbilityScores(" + req.params.id + ", " + data.culture.score + ", " + data.culture.modifier + ", " +
+                                                                            data.econ.score + ", " + data.econ.modifier + ", " +
+                                                                            data.loyalty.score + ", " + data.loyalty.modifier + ", " +
+                                                                            data.stability.score + "," + data.stability.modifier + ")"
+    ).then(async (result)=>{
+        console.log(result);
+        response.status(200).json({success: true});
+    }).catch((err)=>{response.status(400).json({success: false, message: err})});
+};
 
-module.exports = {createKingdom, getUserKingdoms, getKingdomSheet, getLeaders, updateLeaders, updateKingdomResources, updateKingdomRuin};
+
+module.exports = {createKingdom, getUserKingdoms, getKingdomSheet, getLeaders, updateLeaders, updateKingdomResources, updateKingdomRuin, updateKingdomScores};

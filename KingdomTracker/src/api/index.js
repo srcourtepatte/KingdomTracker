@@ -270,6 +270,36 @@ const updateKingdomRuin = async(id, ruindata)=>{
     return response;
 }
 
+const updateKingdomScores = (id, data)=>{
+    console.log(data);
+    
+    const response = api.request({
+        url: `kingdom/abilities/update/${id}`,
+        method: 'post',
+        data: {
+            culture: {
+                score: data.data[0].ability_score,
+                modifier: data.data[0].ability_modifier
+            },
+            econ: {
+                score: data.data[1].ability_score,
+                modifier: data.data[1].ability_modifier
+            },
+            loyalty: {
+                score: data.data[2].ability_score,
+                modifier: data.data[2].ability_modifier
+            },
+            stability: {
+                score: data.data[3].ability_score,
+                modifier: data.data[3].ability_modifier
+            },
+        },
+        withCredentials: true,
+    });
+
+    return response;
+}
+
 const apiCalls = {
     login,
     register,
@@ -286,6 +316,7 @@ const apiCalls = {
     getAllFeats,
     updateKingdomResources,
     updateKingdomRuin,
+    updateKingdomScores
 };
 
 export default apiCalls;

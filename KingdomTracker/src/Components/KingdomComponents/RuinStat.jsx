@@ -11,7 +11,7 @@ const RuinStat = (data)=>{
     const incrementRuin = (e)=>{
         
         clearTimeout(updateTimer);
-        setUpdateTimer(setTimeout(updateRuin, 1000));        
+        setUpdateTimer(setTimeout(updateRuin, 15000));        
         data.data[e.target.id].ruin_score += 1;
         setCurrQuantity(data.data[e.target.id].ruin_score);
         checkThreshold(e.target.id);

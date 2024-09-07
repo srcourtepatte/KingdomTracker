@@ -9,8 +9,6 @@ const Leaders = ({data, onClick, formType})=>{
     const { id } = useParams();  
     const { kingdomName } = useParams();
     const navigate = useNavigate();  
-    console.log(data);
-    console.log(formType);
         
     const checkInvestment = (position)=>{
 
