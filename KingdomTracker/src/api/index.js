@@ -236,6 +236,70 @@ const updateKingdomResources = async(id, food, lumber, luxuries, ore, stone)=>{
     return response;
 }
 
+const updateKingdomRuin = async(id, ruindata)=>{
+    console.log(ruindata.data[0]);
+    
+    const response = await api.request({
+        url: `kingdom/ruin/update/${id}`,
+        method: 'post',
+        data:{
+            corruption: {
+                threshold: ruindata.data[0].threshold,
+                score: ruindata.data[0].ruin_score,
+                penalty: ruindata.data[0].penalty
+            },
+            crime: {
+                threshold: ruindata.data[1].threshold,
+                score: ruindata.data[1].ruin_score,
+                penalty: ruindata.data[1].penalty
+            },
+            decay: {
+                threshold: ruindata.data[2].threshold,
+                score: ruindata.data[2].ruin_score,
+                penalty: ruindata.data[2].penalty
+            },
+            strife: {
+                threshold: ruindata.data[3].threshold,
+                score: ruindata.data[3].ruin_score,
+                penalty: ruindata.data[3].penalty
+            }
+        },
+        withCredentials: true,
+    });
+
+    return response;
+}
+
+const updateKingdomScores = (id, data)=>{
+    console.log(data);
+    
+    const response = api.request({
+        url: `kingdom/abilities/update/${id}`,
+        method: 'post',
+        data: {
+            culture: {
+                score: data.data[0].ability_score,
+                modifier: data.data[0].ability_modifier
+            },
+            econ: {
+                score: data.data[1].ability_score,
+                modifier: data.data[1].ability_modifier
+            },
+            loyalty: {
+                score: data.data[2].ability_score,
+                modifier: data.data[2].ability_modifier
+            },
+            stability: {
+                score: data.data[3].ability_score,
+                modifier: data.data[3].ability_modifier
+            },
+        },
+        withCredentials: true,
+    });
+
+    return response;
+}
+
 const apiCalls = {
     login,
     register,
@@ -251,6 +315,8 @@ const apiCalls = {
     addKingdomFeat,
     getAllFeats,
     updateKingdomResources,
+    updateKingdomRuin,
+    updateKingdomScores
 };
 
 export default apiCalls;
