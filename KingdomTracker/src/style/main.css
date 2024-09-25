@@ -81,6 +81,26 @@
     grid-column: 3;
 }
 
+.cultmodifier {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.econmodifier {
+    grid-column: 3;
+    grid-row: 3; 
+}
+
+.loyaltyModifier {
+    grid-column: 3;
+    grid-row: 4;
+}
+
+.stabilityModifier {
+    grid-column: 3;
+    grid-row: 5;
+}
+
 .item4 {
     grid-column: 4;
 }

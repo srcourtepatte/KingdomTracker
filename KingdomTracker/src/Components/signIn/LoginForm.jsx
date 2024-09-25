@@ -1,6 +1,7 @@
 import { useNavigate, Link } from "react-router-dom";
 
 import apiCalls from "../../api";
+import { useEffect } from "react";
 
 const LoginForm = ()=>{
     const navigate = useNavigate();
@@ -18,6 +19,13 @@ const LoginForm = ()=>{
 
     };
 
+    useEffect(()=>{
+        document.getElementById("password").addEventListener("keydown", (e)=>{
+            if (e.key === 'Enter'){
+                handleSubmit();
+            }
+        });
+    });
 
     return (
         <div className="signInForm">
