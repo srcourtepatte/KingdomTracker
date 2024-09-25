@@ -278,20 +278,20 @@ const updateKingdomScores = (id, data)=>{
         method: 'post',
         data: {
             culture: {
-                score: data.data[0].ability_score,
-                modifier: data.data[0].ability_modifier
+                score: data[0].ability_score,
+                modifier: data[0].ability_modifier
             },
             econ: {
-                score: data.data[1].ability_score,
-                modifier: data.data[1].ability_modifier
+                score: data[1].ability_score,
+                modifier: data[1].ability_modifier
             },
             loyalty: {
-                score: data.data[2].ability_score,
-                modifier: data.data[2].ability_modifier
+                score: data[2].ability_score,
+                modifier: data[2].ability_modifier
             },
             stability: {
-                score: data.data[3].ability_score,
-                modifier: data.data[3].ability_modifier
+                score: data[3].ability_score,
+                modifier: data[3].ability_modifier
             },
         },
         withCredentials: true,

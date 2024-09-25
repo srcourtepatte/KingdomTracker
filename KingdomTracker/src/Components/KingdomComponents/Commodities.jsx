@@ -12,14 +12,14 @@ const Commodities = (data)=>{
     const incrementResource = (e)=>{
         
         clearTimeout(updateTimer);
-        setUpdateTimer(setTimeout(updateResources, 15000));        
+        setUpdateTimer(setTimeout(updateResources, 5000));        
         data.data[e.target.id].quantity_of_resource += 1;
         setCurrQuantity(data.data[e.target.id].quantity_of_resource);
     }
 
     const decrementResource = (e)=>{
         clearTimeout(updateTimer);
-        setUpdateTimer(setTimeout(updateResources, 15000));
+        setUpdateTimer(setTimeout(updateResources, 5000));
         data.data[e.target.id].quantity_of_resource -= 1;
         setCurrQuantity(data.data[e.target.id].quantity_of_resource);
     }

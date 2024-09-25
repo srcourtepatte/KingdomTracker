@@ -11,7 +11,7 @@ const RuinStat = (data)=>{
     const incrementRuin = (e)=>{
         
         clearTimeout(updateTimer);
-        setUpdateTimer(setTimeout(updateRuin, 15000));        
+        setUpdateTimer(setTimeout(updateRuin, 5000));        
         data.data[e.target.id].ruin_score += 1;
         setCurrQuantity(data.data[e.target.id].ruin_score);
         checkThreshold(e.target.id);
@@ -20,7 +20,7 @@ const RuinStat = (data)=>{
     const decrementRuin = (e)=>{
         if(parseInt(data.data[e.target.id].ruin_score) > 0){
             clearTimeout(updateTimer);
-            setUpdateTimer(setTimeout(updateRuin, 15000));
+            setUpdateTimer(setTimeout(updateRuin, 5000));
             data.data[e.target.id].ruin_score -= 1;
             setCurrQuantity(data.data[e.target.id].ruin_score);
         }
@@ -30,7 +30,7 @@ const RuinStat = (data)=>{
     const incrementPenalty = (e)=>{
         if(data.data[e.target.id].penalty < 0){
             clearTimeout(updateTimer);
-            setUpdateTimer(setTimeout(updateRuin, 15000));        
+            setUpdateTimer(setTimeout(updateRuin, 5000));        
             data.data[e.target.id].penalty += 1;
             setCurrQuantity(data.data[e.target.id].penalty);
         }
@@ -38,21 +38,21 @@ const RuinStat = (data)=>{
 
     const decrementPenalty = (e)=>{
         clearTimeout(updateTimer);
-        setUpdateTimer(setTimeout(updateRuin, 15000));
+        setUpdateTimer(setTimeout(updateRuin, 5000));
         data.data[e.target.id].penalty -= 1;
         setCurrQuantity(data.data[e.target.id].penalty);
     }
 
     const incrementThreshold = (e)=>{
         clearTimeout(updateTimer);
-        setUpdateTimer(setTimeout(updateRuin, 15000));
+        setUpdateTimer(setTimeout(updateRuin, 5000));
         data.data[e.target.id].threshold += 1;
         setCurrQuantity(data.data[e.target.id].threshold);
     }
 
     const decrementThreshold = (e)=>{
         clearTimeout(updateTimer);
-        setUpdateTimer(setTimeout(updateRuin, 15000));
+        setUpdateTimer(setTimeout(updateRuin, 5000));
         data.data[e.target.id].threshold -= 1;
         setCurrQuantity(data.data[e.target.id].threshold);
     }

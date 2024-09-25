@@ -1,6 +1,8 @@
 import '../../style/main.css';
+import { useState } from 'react';
 
 const KingdomSkills = (data)=>{
+    const [refresh, setRefresh] = useState(true);
 
     let trained_val_arr = [];
 
@@ -25,6 +27,63 @@ const KingdomSkills = (data)=>{
         }
     };
 
+    const getabilityModifer = (ability)=>{
+        let i;
+        
+        for (i = 0; i < data.data[2].length; i++)
+        {
+            if (data.data[2][i].ability_name === ability)
+            {
+                return data.data[2][i].ability_modifier;
+            }
+        }
+    }
+
+    const setMod = (ability)=>{
+        let i;
+        console.log("here");
+        
+        for (i = 0; i < data.data[2].length; i++)
+        {
+            if(data.data[2][i].ability_name === ability)
+            {
+                console.log("here and " + ability);
+                
+                switch(ability)
+                {
+                    case "Culture": 
+                        console.log("here and here");
+                        console.log(document.getElementById("cultureMod"));
+                        
+                        data.data[2][i].ability_modifier = document.getElementById("cultureMod").textContent;
+                        
+                        console.log("updated");   
+                        break;
+                    case "Economy":
+                        data.data[2][i].ability_modifier = document.getElementById("economyMod");
+                        break;
+                }
+                setRefresh(!refresh);
+                console.log("refereshed");
+                
+            }
+        }
+        
+    }
+
+    // const cultureValChange = document.getElementsByName("Culture")
+    // console.log(cultureValChange);
+    // cultureValChange[0].addEventListener("click", ()=>{
+    //     console.log("clicked");
+    //     setMod("Culture")
+    // });
+    // cultureValChange[1].addEventListener("click", ()=>{
+    //     console.log("clicked");
+    //     setMod("Culture");
+    // });
+
+
+
 
     return (
         <div className='statForm'>
@@ -37,10 +96,10 @@ const KingdomSkills = (data)=>{
 
             {data.data[0].map((skill, index) => (
                 <>
-                <label className='nameLabel' >{skill.skill_name}</label>
+                <label className='nameLabel' key={skill.skill_name}>{skill.skill_name} ({skill.ability_name.charAt(0)})</label>
                 <div className='statBox'>
                     <h1>
-                        {parseInt(skill.proficiency) + parseInt(trained_val_arr[index]) + parseInt(skill.ability_modifier) + parseInt(data.data[1])}
+                        {parseInt(skill.proficiency) + parseInt(trained_val_arr[index]) + parseInt(getabilityModifer(skill.ability_name)) + parseInt(data.data[1])}
                     </h1>
                     
                 </div>
@@ -54,7 +113,7 @@ const KingdomSkills = (data)=>{
                 </div>
                 <div className='statBox'>
                     <h1>
-                        {skill.ability_modifier}
+                        {getabilityModifer(skill.ability_name)}
                     </h1>
                 </div>
                 </>
@@ -65,4 +124,4 @@ const KingdomSkills = (data)=>{
     );
 };
 
-export default KingdomSkills;
+export default KingdomSkills ;

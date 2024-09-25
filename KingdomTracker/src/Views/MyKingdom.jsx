@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import apiCalls from "../api";
 import { useNavigate, useParams } from "react-router-dom";
 
+
+
 const MyKingdom = ()=>{
 
     const [currentTab, setCurrentTab] = useState('Kingdom Sheet');
@@ -11,7 +13,8 @@ const MyKingdom = ()=>{
     const { id } = useParams(); 
     const { kingdomName } = useParams();
     const [data, setData] = useState(["null"]);
-    const [abilities, setAbilities] = useState([]);
+    const [stat, setStat] = useState([]);
+    const [refresh, setRefresh] = useState(false);
     const navigate = useNavigate();
     
     const handleTabChange = (newTab)=>{
@@ -25,15 +28,19 @@ const MyKingdom = ()=>{
             
             apiCalls.getKingdomSheet(id).then((result)=>{
                 setData(result.data.data);
-
+                console.log(result.data.data[1]);
+                setStat(result.data.data[1]);
             })
         }
     }, []);
 
     const updateLeaders = ()=>{
         navigate(`/edit-leaders/${kingdomName}/${id}`);
-    }
+    };
 
+    const refreshSheet = ()=>{
+        setRefresh(!refresh);
+    };
 
     return (
 
@@ -50,11 +57,11 @@ const MyKingdom = ()=>{
                 <h1 onClick={(e) => {handleTabChange("Map")}}>Map</h1>
             </div>
             <div className="kingdomSheet">
-                <KingdomStats data={data[1]}/>
+                <KingdomStats data={stat} setData={setStat} onUpdateStat={refreshSheet}/>
                 <RuinStat data={data[2]}/>
                 <Leaders data={data[5]} onClick={updateLeaders} formType="view"/>
                 
-                <KingdomSkills data={[data[3], data[0].kingdom_level]}/>
+                <KingdomSkills data={[data[3], data[0].kingdom_level, data[1]]}/>
                 <Commodities data={data[4]}/>
             </div>
         </> :
@@ -90,4 +97,4 @@ const MyKingdom = ()=>{
     );
 };
 
-export default MyKingdom;
+export { MyKingdom };
