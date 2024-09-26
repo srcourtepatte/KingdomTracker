@@ -1,14 +1,16 @@
 import '../../style/main.css';
 import { useState } from 'react';
 
-const KingdomSkills = (data)=>{
-    const [refresh, setRefresh] = useState(true);
-
+const KingdomSkills = ({data, onSkillTraining})=>{
+    console.log(data);
+    
+    const [updateTimer, setUpdateTimer] = useState();
     let trained_val_arr = [];
+    const skill_val_arr = ["untrained", "trained", "expert", "master", "legendary"]
 
     for(let i = 0; i < 16; i++)
     {
-        switch(data.data[0][i].training_level){
+        switch(data[0][i].training_level){
             case "untrained":
                 trained_val_arr.push("0");
             break;
@@ -22,7 +24,7 @@ const KingdomSkills = (data)=>{
                 trained_val_arr.push("6");
                 break;
             case "legendary":
-                trained_val_arr("8");
+                trained_val_arr.push("8");
                 break;
         }
     };
@@ -30,61 +32,88 @@ const KingdomSkills = (data)=>{
     const getabilityModifer = (ability)=>{
         let i;
         
-        for (i = 0; i < data.data[2].length; i++)
+        for (i = 0; i < data[2].length; i++)
         {
-            if (data.data[2][i].ability_name === ability)
+            if (data[2][i].ability_name === ability)
             {
-                return data.data[2][i].ability_modifier;
+                return data[2][i].ability_modifier;
             }
         }
     }
 
-    const setMod = (ability)=>{
-        let i;
-        console.log("here");
-        
-        for (i = 0; i < data.data[2].length; i++)
+    const maxSkill = (index)=>{
+        if(data[0][index].training_level === "legendary")
         {
-            if(data.data[2][i].ability_name === ability)
-            {
-                console.log("here and " + ability);
-                
-                switch(ability)
+            return true;
+        }
+
+        return false;
+    }
+
+    const minSkill = (index) =>{
+        if(data[0][index].training_level === "untrained")
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    const incrementScore = (e)=>{
+        if(!maxSkill(e.target.id))
+        {
+            const newData = data;
+            clearTimeout(updateTimer);
+            setUpdateTimer(setTimeout(updateSkills, 5000));
+
+            let i;
+            for(i = 0; i < skill_val_arr.length; i++)
+            {             
+                if (skill_val_arr[i] === newData[0][e.target.id].training_level)
                 {
-                    case "Culture": 
-                        console.log("here and here");
-                        console.log(document.getElementById("cultureMod"));
-                        
-                        data.data[2][i].ability_modifier = document.getElementById("cultureMod").textContent;
-                        
-                        console.log("updated");   
-                        break;
-                    case "Economy":
-                        data.data[2][i].ability_modifier = document.getElementById("economyMod");
-                        break;
+                    console.log("in loop");
+                    
+                    newData[0][e.target.id].training_level = skill_val_arr[i + 1]; 
+                    data[0] = newData[0];
+                    break;
                 }
-                setRefresh(!refresh);
-                console.log("refereshed");
-                
             }
+            onSkillTraining();
         }
+            
         
+    
+    }
+    
+    const decrementScore = (e)=>{
+
+            if(!minSkill(e.target.id))
+            {
+                const newData = data;
+                clearTimeout(updateTimer);
+                setUpdateTimer(setTimeout(updateSkills, 5000));
+    
+                let i;
+                for(i = 0; i < skill_val_arr.length; i++)
+                {
+                    if (skill_val_arr[i] === newData[0][e.target.id].training_level)
+                    {
+                        newData[0][e.target.id].training_level = skill_val_arr[i - 1];
+                        data[0] = newData[0];
+                        break;
+                    }
+                }  
+                onSkillTraining();
+            }
+
     }
 
-    // const cultureValChange = document.getElementsByName("Culture")
-    // console.log(cultureValChange);
-    // cultureValChange[0].addEventListener("click", ()=>{
-    //     console.log("clicked");
-    //     setMod("Culture")
-    // });
-    // cultureValChange[1].addEventListener("click", ()=>{
-    //     console.log("clicked");
-    //     setMod("Culture");
-    // });
-
-
-
-
+    const updateSkills = ()=>{
+        console.log("Skills updated");
+        console.log(data);
+        
+        
+    }
     return (
         <div className='statForm'>
 
@@ -94,23 +123,29 @@ const KingdomSkills = (data)=>{
             <label className='label item4'>Training</label>
             <label className='label item5'>Modifier</label>
 
-            {data.data[0].map((skill, index) => (
+            {data[0].map((skill, index) => (
                 <>
                 <label className='nameLabel' key={skill.skill_name}>{skill.skill_name} ({skill.ability_name.charAt(0)})</label>
                 <div className='statBox'>
                     <h1>
-                        {parseInt(skill.proficiency) + parseInt(trained_val_arr[index]) + parseInt(getabilityModifer(skill.ability_name)) + parseInt(data.data[1])}
+                        {parseInt(skill.proficiency) + parseInt(trained_val_arr[index]) + parseInt(getabilityModifer(skill.ability_name)) + parseInt(data[1])}
                     </h1>
                     
                 </div>
                 <div className='statBox'>
                     <h1>
-                        {parseInt(skill.proficiency) + parseInt(trained_val_arr[index]) + parseInt(data.data[1])}
+                        {parseInt(skill.proficiency) + parseInt(trained_val_arr[index]) + parseInt(data[1])}
                     </h1>
                 </div>
-                <div className='statBox'>
-                    <h1>{skill.training_level.charAt(0)}</h1>
-                </div>
+                <div className="resourceBox">
+                            <div className="resourceStat ">
+                                <h1>{skill.training_level.charAt(0)}</h1>   
+                            </div>
+                            <div className='resIncrement'>
+                                <input type="button" value="+" id={index} name={skill.skill_name} onClick={(e)=>{incrementScore(e)}}/>
+                                <input type="button" value="-" id={index} name={skill.skill_name} onClick={(e)=>{decrementScore(e)}}/>   
+                            </div>
+                        </div>
                 <div className='statBox'>
                     <h1>
                         {getabilityModifer(skill.ability_name)}

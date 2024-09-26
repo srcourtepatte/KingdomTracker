@@ -6,7 +6,6 @@ import { useParams } from "react-router-dom";
 import KingdomSkills from "./KingomSkills";
 
 const KingdomStats = ({data, setData, onUpdateStat})=>{
- console.log(data);
  
  const [updateTimer, setUpdateTimer] = useState();
  const [currQuantity, setCurrQuantity] = useState();
