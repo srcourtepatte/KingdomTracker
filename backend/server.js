@@ -10,7 +10,7 @@ backend.use(bodyParser.json());
 
 backend.use(cors({
     credentials: true,
-    origin: "http://localhost:5173"
+    // origin: "http://localhost:5173"
 }));
 
 backend.use('/', router);

@@ -1,9 +1,9 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: 'http://localhost:3000/',
+    baseURL: 'kingdomdb.cpwkcisielmk.us-east-2.rds.amazonaws.com',
             headers: {
-            origin: "http://localhost:5173",
+            // origin: "https://staging.d2poxglyndfed2.amplifyapp.com/",
         },
     
 });
