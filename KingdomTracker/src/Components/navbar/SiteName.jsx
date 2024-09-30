@@ -8,7 +8,7 @@ const Title = ()=>{
     font-size: xx-large;
     font-weight: bold;
     margin-bottom: 0;
-    color: gold;
+    color: white;
 `;
 
     return (

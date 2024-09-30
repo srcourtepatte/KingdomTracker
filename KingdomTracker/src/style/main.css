@@ -30,7 +30,7 @@
 .nameLabel {
     font-size: xx-large;
     font-weight: bold;
-    color: gold;
+    color: rgb(255, 255, 255);
     margin-left:auto;
     margin-right: auto;
 }
@@ -42,7 +42,7 @@
     column-rule: 10px;
     margin-top: 30px;
     background-color: rgb(91, 127, 52);
-    border: 1px solid gold;
+    border: 1px solid rgba(255, 217, 0, 0.466);
     border-radius: 30px;
     width: 40%;
     padding-bottom: 5px;
@@ -56,7 +56,7 @@
     column-gap: 5px;
     row-gap: 5px;
     background-color: rgb(91, 127, 52);
-    border: 1px solid gold;
+    border: 1px solid rgba(255, 217, 0, 0.466);
     width: 60%;
     position: absolute;
     /* z-index: 15; */
@@ -129,7 +129,7 @@
 }
 
 .kingdomCard {
-    border: 1px solid gold;
+    border: 1px solid rgba(255, 217, 0, 0.466);
     width: 85%;
     margin: auto;
     margin-top: 10px;
@@ -144,7 +144,7 @@
 }
 
 .activeTab {
-    color: gold;
+    color: rgb(255, 255, 255);
     position: relative;
 }
 
@@ -152,7 +152,7 @@
     content: '';
     position: absolute;
     width: 100%;
-    border-bottom: ridge gold 5px;
+    border-bottom: ridge rgba(255, 217, 0, 0.466) 5px;
     left: 0;
     bottom: -10px;
     border-radius: 50%;
@@ -161,7 +161,7 @@
 
 .signInForm {
     display: flex;
-    border: ridge 4px gold;
+    border: ridge 4px rgba(255, 217, 0, 0.466);
     flex-direction: column;
     flex-wrap: wrap;
     width: 40vw;
@@ -222,7 +222,7 @@
 
 .goodButton {
     background-color: green;
-    border: ridge 3px yellow;
+    border: ridge 3px rgba(255, 217, 0, 0.466);
     margin: auto;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -232,7 +232,7 @@
 
 .badButton {
     background-color: red;
-    border: ridge 3px yellow;
+    border: ridge 3px rgba(255, 217, 0, 0.466);
     margin-left: auto;
     margin-right: 20px;
     margin-top: 5px;
@@ -243,7 +243,7 @@
 
 .createButton{
     background-color: green;
-    border: ridge 3px yellow;
+    border: ridge 3px rgba(255, 217, 0, 0.466);
     margin-right: auto;
     margin-left: 20px;
     margin-top: 5px;
@@ -266,7 +266,7 @@
     display: block;
     width: 85%;
     margin: auto;
-    border: 1px solid gold;
+    border: 1px solid rgba(255, 217, 0, 0.466);
     margin-top: 5px;
     background: rgb(71, 105, 3);
     padding: 5px;
@@ -283,7 +283,7 @@
 }
 
 .selected{
-    border: 3px solid gold;
+    border: 3px solid rgba(255, 217, 0, 0.466);
 }
 
 
