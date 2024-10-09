@@ -11,7 +11,7 @@ const KingdomDetails = (data)=>{
     `
 
     const KingdomName = styled.h2`
-        color: gold;
+        color: white;
         display: flex;
         flex-direction: row;
 

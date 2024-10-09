@@ -300,6 +300,20 @@ const updateKingdomScores = (id, data)=>{
     return response;
 }
 
+const updateKingdomSkill = (id, data)=>{
+    const response = api.request({
+        url: `kingdom/skills/update/${id}`,
+        method: 'post',
+        data: {
+            skill_id: data.skill_id,
+            training: data.training_level
+        },
+        withCredentials: true,
+    });
+
+    return response;
+}
+
 const apiCalls = {
     login,
     register,
@@ -316,7 +330,8 @@ const apiCalls = {
     getAllFeats,
     updateKingdomResources,
     updateKingdomRuin,
-    updateKingdomScores
+    updateKingdomScores,
+    updateKingdomSkill,
 };
 
 export default apiCalls;
