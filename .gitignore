@@ -45,3 +45,7 @@ DBfiles/structure_upgrade_to.csv
 DBfiles/structures.csv
 DBfiles/worksites.csv
 .env
+*.csv
+*.xlsx
+*.sql
+

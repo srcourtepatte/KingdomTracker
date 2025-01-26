@@ -1,9 +1,11 @@
 import '../../style/main.css';
 import { useState } from 'react';
+import apiCalls from '../../api';
+import { useParams } from 'react-router-dom';
 
 const KingdomSkills = ({data, onSkillTraining})=>{
     console.log(data);
-    
+    const { id } = useParams();
     const [updateTimer, setUpdateTimer] = useState();
     let trained_val_arr = [];
     const skill_val_arr = ["untrained", "trained", "expert", "master", "legendary"]
@@ -62,58 +64,74 @@ const KingdomSkills = ({data, onSkillTraining})=>{
     const incrementScore = (e)=>{
         if(!maxSkill(e.target.id))
         {
-            const newData = data;
             clearTimeout(updateTimer);
-            setUpdateTimer(setTimeout(updateSkills, 5000));
-
-            let i;
-            for(i = 0; i < skill_val_arr.length; i++)
-            {             
-                if (skill_val_arr[i] === newData[0][e.target.id].training_level)
-                {
-                    console.log("in loop");
-                    
-                    newData[0][e.target.id].training_level = skill_val_arr[i + 1]; 
-                    data[0] = newData[0];
-                    break;
-                }
-            }
+            const trainingValue = getIncrementedTrainingVal(e.target.id);
+            setUpdateTimer(setTimeout(updateSkills(e.target.id, trainingValue), 2000));
             onSkillTraining();
         }
-            
-        
-    
     }
     
     const decrementScore = (e)=>{
 
             if(!minSkill(e.target.id))
-            {
-                const newData = data;
-                clearTimeout(updateTimer);
-                setUpdateTimer(setTimeout(updateSkills, 5000));
-    
-                let i;
-                for(i = 0; i < skill_val_arr.length; i++)
-                {
-                    if (skill_val_arr[i] === newData[0][e.target.id].training_level)
-                    {
-                        newData[0][e.target.id].training_level = skill_val_arr[i - 1];
-                        data[0] = newData[0];
-                        break;
-                    }
-                }  
+            {              
+                clearTimeout(updateTimer); 
+                const trainingValue = getDecrementedTrainingVal(e.target.id);            
+                setUpdateTimer(setTimeout(updateSkills(e.target.id, trainingValue), 2000));
                 onSkillTraining();
             }
 
     }
 
-    const updateSkills = ()=>{
-        console.log("Skills updated");
-        console.log(data);
-        
-        
+    const getDecrementedTrainingVal = (skillArrVal)=>{
+        const newData = data;
+        let i;
+        for(i = 0; i < skill_val_arr.length; i++)
+        {
+            if (skill_val_arr[i] === newData[0][skillArrVal].training_level)
+            {
+                newData[0][skillArrVal].training_level = skill_val_arr[i - 1];
+                data[0] = newData[0];
+                break;
+            }
+        }  
+        return newData[0][skillArrVal].training_level;
     }
+
+    const getIncrementedTrainingVal = (skillArrVal)=>{
+        const newData = data;
+        let i;
+        for(i = 0; i < skill_val_arr.length; i++)
+            {             
+                if (skill_val_arr[i] === newData[0][skillArrVal].training_level)
+                {
+                    console.log("in loop");
+                    
+                    newData[0][skillArrVal].training_level = skill_val_arr[i + 1]; 
+                    data[0] = newData[0];
+                    break;
+                }
+            }
+            return newData[0][skillArrVal].training_level;
+    }
+
+    const updateSkills = (skillArrVal, trainingValue)=>{
+        console.log(skillArrVal);
+        console.log(data[0]);
+        
+        const skillid = data[0][skillArrVal].skill_id;
+        console.log(trainingValue);
+        const newData = {
+                        skillID: skillid, 
+                        trainingVal: trainingValue};
+        
+        
+        apiCalls.updateKingdomSkill(id, newData).then((result) =>{
+            console.log("for real");
+            
+        })
+    };
+
     return (
         <div className='statForm'>
 

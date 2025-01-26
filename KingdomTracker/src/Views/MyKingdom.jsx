@@ -28,7 +28,7 @@ const MyKingdom = ()=>{
             
             apiCalls.getKingdomSheet(id).then((result)=>{
                 setData(result.data.data);
-                console.log(result.data.data[1]);
+                console.log(result.data.data);
                 setStat(result.data.data[1]);
             })
         }

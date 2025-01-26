@@ -127,7 +127,7 @@ const updateKingdomSkill = async (req, response) =>{
     const data = req.body;
     console.log(data);
 
-    db.promise().query("CALL updateSkills(" + req.params.id + ", " + data.skill_id + ", " + data.training + ")").then(async (result)=>{
+    db.promise().query("CALL updateSkills(" + req.params.id + ", " + data.skill_id + ", '" + data.training + "')").then(async (result)=>{
         response.status(200).json({success: true});
     }).catch((err)=>{response.status(400).json({success: false, message: err})});
     

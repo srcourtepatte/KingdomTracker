@@ -300,18 +300,20 @@ const updateKingdomScores = (id, data)=>{
     return response;
 }
 
-const updateKingdomSkill = (id, data)=>{
+const updateKingdomSkill = async (id, data)=>{
+    console.log(data);
+    
     const response = api.request({
         url: `kingdom/skills/update/${id}`,
         method: 'post',
         data: {
-            skill_id: data.skill_id,
-            training: data.training_level
+            skill_id: data.skillID,
+            training: data.trainingVal
         },
         withCredentials: true,
     });
 
-    return response;
+    return data;
 }
 
 const apiCalls = {
