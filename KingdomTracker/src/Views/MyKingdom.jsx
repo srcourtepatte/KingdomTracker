@@ -28,7 +28,7 @@ const MyKingdom = ()=>{
             
             apiCalls.getKingdomSheet(id).then((result)=>{
                 setData(result.data.data);
-                console.log(result.data.data[1]);
+                console.log(result.data.data);
                 setStat(result.data.data[1]);
             })
         }
@@ -61,7 +61,7 @@ const MyKingdom = ()=>{
                 <RuinStat data={data[2]}/>
                 <Leaders data={data[5]} onClick={updateLeaders} formType="view"/>
                 
-                <KingdomSkills data={[data[3], data[0].kingdom_level, data[1]]}/>
+                <KingdomSkills data={[data[3], data[0].kingdom_level, data[1]]} onSkillTraining={refreshSheet}/>
                 <Commodities data={data[4]}/>
             </div>
         </> :

@@ -44,7 +44,6 @@ const getKingdomSheet = async (req, response) =>{
             await db.promise().query("CALL getKingdomRuin(" + req.params.id + ")").then(async (result)=>{
                 data.push(result[0][0]);
                 await db.promise().query("CALL getKingdomSkills(" + req.params.id + ")").then(async (result)=>{
-                    console.log(result[0][0]);
                     data.push(result[0][0]);
                     await db.promise().query("CALL getKingdomResources(" + req.params.id + ")").then(async (result)=>{
                         data.push(result[0][0]);
@@ -62,8 +61,6 @@ const getKingdomSheet = async (req, response) =>{
 
 const getLeaders = async (req, response) =>{
     db.promise().query("SELECT * from getKingdomLeaders where kingdom_id = " + req.params.id).then( async (result)=>{
-        console.log(result[0]);
-        console.log(result[0][0]);
         
         response.status(200).json({success: true, data: result[0]});
     }).catch((err)=>{
@@ -73,7 +70,6 @@ const getLeaders = async (req, response) =>{
 
 const updateLeaders = async (req, response) =>{
     const data = req.body.leaderData;
-    console.log(data);
     db.promise().query("CALL update_kingdom_leaders(" + req.body.id + ", " 
                         + "'" + data[0].name + "', " + data[0].invested + ", " + data[0].role + ", "
                         + "'" + data[1].name + "', " + data[1].invested + ", " + data[1].role + ", "
@@ -91,7 +87,6 @@ const updateLeaders = async (req, response) =>{
 
 const updateKingdomResources = async (req, response) =>{
     const data = req.body;
-    console.log(data);
 
     db.promise().query("CALL updateKingdomResources(" + req.params.id + ", " + data.food + ", "
         + data.lumber + ", " + data.luxuries + ", " + data.ore + ", " + data.stone + ")"
@@ -103,7 +98,6 @@ const updateKingdomResources = async (req, response) =>{
 
 const updateKingdomRuin = async (req, response) =>{
     const data = req.body;
-    console.log(data);
 
     db.promise().query("CALL updateRuin(" + req.params.id + "," + data.corruption.score + ", " + data.corruption.penalty + ", " + data.corruption.threshold + ", " +
                                                                 data.crime.score + ", " + data.crime.penalty + ", " + data.crime.threshold + ", " +
@@ -117,7 +111,6 @@ const updateKingdomRuin = async (req, response) =>{
 
 const updateKingdomScores = async (req, response) =>{
     const data = req.body;
-    console.log(data);
     
     db.promise().query("CALL updateAbilityScores(" + req.params.id + ", " + data.culture.score + ", " + data.culture.modifier + ", " +
                                                                             data.econ.score + ", " + data.econ.modifier + ", " +
@@ -130,4 +123,15 @@ const updateKingdomScores = async (req, response) =>{
 };
 
 
-module.exports = {createKingdom, getUserKingdoms, getKingdomSheet, getLeaders, updateLeaders, updateKingdomResources, updateKingdomRuin, updateKingdomScores};
+const updateKingdomSkill = async (req, response) =>{
+    const data = req.body;
+    console.log(data);
+
+    db.promise().query("CALL updateSkills(" + req.params.id + ", " + data.skill_id + ", '" + data.training + "')").then(async (result)=>{
+        response.status(200).json({success: true});
+    }).catch((err)=>{response.status(400).json({success: false, message: err})});
+    
+};
+
+module.exports = {  createKingdom, getUserKingdoms, getKingdomSheet, getLeaders, updateLeaders, updateKingdomResources, 
+                    updateKingdomRuin, updateKingdomScores, updateKingdomSkill};
