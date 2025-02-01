@@ -10,7 +10,7 @@ backend.use(bodyParser.json());
 
 backend.use(cors({
     credentials: true,
-    origin: "https://kingdom-tracker.vercel.app/"
+    origin: "http://localhost:5173"
 }));
 
 backend.use('/', router);
