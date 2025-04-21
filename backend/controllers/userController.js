@@ -27,16 +27,19 @@ const register = async (req, response) => {
             }));
             response.append('Set-Cookie', cookie.serialize('userId',userId, {
               httpOnly: true,
+              sameSite: 'none',
               secure: true,
               path: '/'
             }));
             response.append('Set-Cookie', cookie.serialize('user_name', username, {
               httpOnly: true,
+              sameSite: 'none',
               secure: true,
               path: '/'
             }));
             response.append('Set-Cookie', cookie.serialize('email', email, {
               httpOnly: true,
+              sameSite: 'none',
               secure: true,
               path: '/'
             }));
@@ -78,16 +81,19 @@ const login = async (req, response) => {
               }));
               response.append('Set-Cookie', cookie.serialize('userId', userdetails.user_id, {
                 httpOnly: true,
+                sameSite: 'none',
                 secure: true,
                 path: '/'
               }));
               response.append('Set-Cookie', cookie.serialize('user_name', userdetails.user_name, {
                 httpOnly: true,
+                sameSite: 'none',
                 secure: true,
                 path: '/'
               }));
               response.append('Set-Cookie', cookie.serialize('email', userdetails.email, {
                 httpOnly: true,
+                sameSite: 'none',
                 secure: true,
                 path: '/'
               }));
