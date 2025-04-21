@@ -15,7 +15,7 @@ backend.use(cors({
 
 backend.use('/', router);
 
-backend.listen(3000, ()=>{
+backend.listen(process.env.PORT, ()=>{
     console.log("Server started");
 });
 
