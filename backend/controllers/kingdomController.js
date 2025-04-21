@@ -7,8 +7,9 @@ const cookie = require('cookie');
 const createKingdom = async (req, response) =>{
     const cookies = req.headers.cookie;
     const cookieArr = cookie.parse(cookies);
+    console.log(cookieArr);
     
-    db.promise().query("CALL createKingdom(" + cookieArr.userId + ', "' + req.body.name + '", ' + req.body.heartland + ", " + 
+    db.promise().query("CALL createKingdom(" + cookieArr.userId + ", '" + req.body.name + "', " + req.body.heartland + ", " + 
         req.body.charter + ", " + req.body.gov + ", " + req.body.free1 + ", " + req.body.free2 + ", " + "@o_kingdom_id)").then( async (result) =>{
             await db.promise().query("SELECT @o_kingdom_id AS id").then(async (result) =>{
                 const kingdom_id = result[0][0];
