@@ -8,7 +8,7 @@ const createKingdom = async (req, response) =>{
     const cookies = req.headers.cookie;
     const cookieArr = cookie.parse(cookies);
     
-    db.promise().query("CALL createKingdom(" + cookieArr.userId + ', "' + req.body.name + '", ' + req.body.heartland + ", " + 
+    db.promise().query("CALL createKingdom(" + cookieArr.userId + ", \'" + req.body.name + "\', " + req.body.heartland + ", " + 
         req.body.charter + ", " + req.body.gov + ", " + req.body.free1 + ", " + req.body.free2 + ", " + "@o_kingdom_id)").then( async (result) =>{
             await db.promise().query("SELECT @o_kingdom_id AS id").then(async (result) =>{
                 const kingdom_id = result[0][0];
@@ -60,7 +60,7 @@ const getKingdomSheet = async (req, response) =>{
 };
 
 const getLeaders = async (req, response) =>{
-    db.promise().query("SELECT * from getKingdomLeaders where kingdom_id = " + req.params.id).then( async (result)=>{
+    db.promise().query("SELECT * from getkingdomleaders where kingdom_id = " + req.params.id).then( async (result)=>{
         
         response.status(200).json({success: true, data: result[0]});
     }).catch((err)=>{

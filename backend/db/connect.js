@@ -11,7 +11,7 @@ const connection = mySql.createConnection({
     user: DB_USER,
     password: DB_PASSWORD,
     database: DB_NAME,
-    insecureAuth: true
+    port: 14303
 
 });
 
