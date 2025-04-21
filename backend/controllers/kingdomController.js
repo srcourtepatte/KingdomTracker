@@ -60,7 +60,7 @@ const getKingdomSheet = async (req, response) =>{
 };
 
 const getLeaders = async (req, response) =>{
-    db.promise().query("SELECT * from getKingdomLeaders where kingdom_id = " + req.params.id).then( async (result)=>{
+    db.promise().query("SELECT * from getkingdomleaders where kingdom_id = " + req.params.id).then( async (result)=>{
         
         response.status(200).json({success: true, data: result[0]});
     }).catch((err)=>{
