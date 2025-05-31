@@ -12,6 +12,7 @@ const LoginForm = ()=>{
 
 
         apiCalls.login(email, password).then((res)=>{
+            console.log(res);
             navigate("/dashboard");
         }).catch((err) =>{
             alert(err);

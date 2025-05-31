@@ -1,9 +1,9 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: 'https://kingdomtracker.onrender.com/',
+    baseURL: 'http://localhost:3000/',
             headers: {
-            origin: "https://kingdom-tracker.vercel.app/",
+            origin: "http://localhost:5173",
         },
     
 });

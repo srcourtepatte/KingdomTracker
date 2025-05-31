@@ -132,6 +132,24 @@ const KingdomSkills = ({data, onSkillTraining})=>{
         })
     };
 
+    const getSkillTotalMod = (skill)=>{
+        if(skill.training_level === "untrained"){
+            return parseInt(skill.proficiency) + 0 + parseInt(getabilityModifer(skill.ability_name));
+        }
+        else if (skill.training_level === 'trained'){
+            return parseInt(skill.proficiency) + 2 + parseInt(getabilityModifer(skill.ability_name)) + parseInt(data[1]);
+        }
+        else if(skill.training_level === "expert"){
+            return parseInt(skill.proficiency) + 4 + parseInt(getabilityModifer(skill.ability_name)) + parseInt(data[1]);
+        }
+        else if(skill.training_level === "master"){
+            return parseInt(skill.proficiency) + 6 + parseInt(getabilityModifer(skill.ability_name)) + parseInt(data[1]);
+        }
+        else{
+            return parseInt(skill.proficiency) + 8 + parseInt(getabilityModifer(skill.ability_name)) + parseInt(data[1]);
+        }
+    }
+
     return (
         <div className='statForm'>
 
@@ -146,13 +164,13 @@ const KingdomSkills = ({data, onSkillTraining})=>{
                 <label className='nameLabel' key={skill.skill_name}>{skill.skill_name} ({skill.ability_name.charAt(0)})</label>
                 <div className='statBox'>
                     <h1>
-                        {parseInt(skill.proficiency) + parseInt(trained_val_arr[index]) + parseInt(getabilityModifer(skill.ability_name)) + parseInt(data[1])}
+                       {getSkillTotalMod(skill)}
                     </h1>
                     
                 </div>
                 <div className='statBox'>
                     <h1>
-                        {parseInt(skill.proficiency) + parseInt(trained_val_arr[index]) + parseInt(data[1])}
+                        {parseInt(skill.proficiency) + parseInt(trained_val_arr[index])}
                     </h1>
                 </div>
                 <div className="resourceBox">

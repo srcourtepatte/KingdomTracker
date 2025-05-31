@@ -10,12 +10,12 @@ backend.use(bodyParser.json());
 
 backend.use(cors({
     credentials: true,
-    origin: true,
+    origin: 'http://localhost:5173',
 }));
 
 backend.use('/', router);
 
-backend.listen(process.env.PORT, ()=>{
+backend.listen(3000, ()=>{
     console.log("Server started");
 });
 
